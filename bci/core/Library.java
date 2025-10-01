@@ -1,7 +1,7 @@
 package bci.core;
 
-import java.io.*;
 import bci.core.exception.UnrecognizedEntryException;
+import java.io.*;
 // FIXME import classes
 
 /**
@@ -13,9 +13,19 @@ public class Library implements Serializable {
   @Serial
   private static final long serialVersionUID = 202501101348L;
 
-  // FIXME define attributes
-  // FIXME define contructor(s)
-  // FIXME define more methods
+  private Dia _dia = new Dia();
+  
+  public Library () {
+    
+  }
+  
+  public Dia getData () {
+    return new Dia(_dia.getDia());
+  }
+
+  public void avancaData (int n) {
+    _dia.avanca(n);
+  }
 
   /**
    * Read text input file at the beginning of the program and populates the

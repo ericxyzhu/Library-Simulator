@@ -11,11 +11,12 @@ class DoAdvanceDate extends Command<LibraryManager> {
 
   DoAdvanceDate(LibraryManager receiver) {
     super(Label.ADVANCE_DATE, receiver);
-    //FIXME add command fields
+    addIntegerField("number", Prompt.daysToAdvance());
   }
 
   @Override
   protected final void execute() {
-    //FIXME implement command
+    Integer num = integerField("number");
+    _receiver.avancaData(num);
   }
 }

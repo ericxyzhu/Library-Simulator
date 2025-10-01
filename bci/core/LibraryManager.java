@@ -18,8 +18,17 @@ public class LibraryManager {
   private Library _library;
 
   // FIXME: add more fields if needed
-  // FIXME: add constructor if needed
-  // FIXME: add more methods if needed
+  public LibraryManager () {
+    _library = new Library();
+  }
+
+  public Dia getData () {
+    return _library.getData();
+  }
+
+  public void avancaData (int n) {
+    _library.avancaData(n);
+  }
 
   /**
    * Saves the serialized application's state into the file associated to the current library

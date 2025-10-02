@@ -2,13 +2,14 @@ package bci.core;
 
 import java.io.Serializable;
 
-public abstract class Work implements Serializable { 
+public abstract class Obra implements Serializable { 
     private static int _qtdtotal;
     private int _id;
     private int _price;
     private int _numberOfCopies;
     private String _title;
     private Categoria _categoria;
+    private int _disponiveis; 
     
     
     public Obra(String title, int price, Categoria categoria, int copies){
@@ -19,8 +20,8 @@ public abstract class Work implements Serializable {
 
     } // FIXME Na Uml do stor não aparece creator na classe Obra
 
-    public int getqtdtotal(){
-        return this._qtdtotal;
+    public static int getqtdtotal(){
+        return _qtdtotal;
     }
 
     public int getprice(){
@@ -41,13 +42,17 @@ public abstract class Work implements Serializable {
 
     public Categoria getcategoria(){
         return this._categoria;
+
     }
+    
+    public abstract String toString();
 
     String getDescription (){
+        return _id + " - " + Integer.toString(_disponiveis) + " de " + Integer.toString(_numberOfCopies) + " - " + this.toString();
 
     }
 
-    public boolean changeCopies (Work work, int copies){
+    public boolean changeCopies (Obra obra, int copies){
 
     }
 

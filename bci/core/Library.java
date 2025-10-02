@@ -2,7 +2,6 @@ package bci.core;
 
 import bci.core.exception.UnrecognizedEntryException;
 import java.io.*;
-import java.util.zip.DeflaterOutputStream;
 
 /**
  * Class that represents the library as a whole.
@@ -18,31 +17,6 @@ public class Library implements Serializable {
   
   public Library () {
     
-  }
-
-  public Object readObject(String inputFilename) throws IOException, ClassNotFoundException {
-    ObjectInputStream objIn = null;
-    try {
-      objIn = new ObjectInputStream(new FileInputStream(inputFilename));
-      Object anObject = objIn.readObject();
-      return anObject;
-    } finally {
-      if (objIn != null)
-      objIn.close();
-    }
-  }
-
-  public void saveObject(String filename, Object obj) throws IOException {
-    ObjectOutputStream obOut = null;
-    try {
-      FileOutputStream fpout = new FileOutputStream(filename);
-      DeflaterOutputStream dOut = new DeflaterOutputStream(fpout);
-      obOut = new ObjectOutputStream(dOut);
-      obOut.writeObject(obj);
-    } finally {
-      if (obOut != null)
-      obOut.close();
-    }
   }
   
   public Dia getData () {

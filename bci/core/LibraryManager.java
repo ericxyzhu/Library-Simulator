@@ -39,6 +39,7 @@ public class LibraryManager {
    **/
   public void save() throws MissingFileAssociationException, FileNotFoundException, IOException {
     // FIXME implement serialization method
+    
   }
 
   /**

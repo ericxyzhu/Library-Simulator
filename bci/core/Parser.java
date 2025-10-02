@@ -1,9 +1,10 @@
 package bci.core;
 
 import java.io.IOException;
+import java.io.Serializable;
 // MAYBE more import
 
-class Parser {
+class Parser implements Serializable {
   private Library _library;
 
   Parser(Library lib) {

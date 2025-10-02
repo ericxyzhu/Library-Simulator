@@ -12,8 +12,6 @@ public class Dia implements Serializable {
         this (1);
     }
 
-    
-
     public Dia (int dia) {
         _dia = dia;
     }

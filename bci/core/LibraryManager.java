@@ -2,6 +2,7 @@ package bci.core;
 
 import bci.core.exception.*;
 import java.io.*;
+import java.util.zip.DeflaterOutputStream;
 
 // FIXME import classes
 
@@ -39,7 +40,7 @@ public class LibraryManager {
    **/
   public void save() throws MissingFileAssociationException, FileNotFoundException, IOException {
     // FIXME implement serialization method
-    
+
   }
 
   /**
@@ -53,6 +54,16 @@ public class LibraryManager {
    **/
   public void saveAs(String filename) throws FileNotFoundException, MissingFileAssociationException, IOException {
     // FIXME implement serialization method
+    ObjectOutputStream obOut = null;
+    try {
+      FileOutputStream fpout = new FileOutputStream(filename);
+      DeflaterOutputStream dOut = new DeflaterOutputStream(fpout);
+      obOut = new ObjectOutputStream(dOut);
+      obOut.writeObject(_library);
+    } finally {
+      if (obOut != null)
+      obOut.close();
+    }
   }
 
   /**
@@ -63,8 +74,16 @@ public class LibraryManager {
    * @throws UnavailableFileException if the specified file does not exist or there is
    *         an error while processing this file.
    **/
-  public void load(String filename) throws UnavailableFileException {
+  public void load(String filename) throws UnavailableFileException, IOException, ClassNotFoundException {
     // FIXME implement serialization method
+    ObjectInputStream objIn = null;
+    try {
+      objIn = new ObjectInputStream(new FileInputStream(filename));
+      _library = (Library)objIn.readObject();
+    } finally {
+      if (objIn != null)
+      objIn.close();
+    }
   }
 
   /**

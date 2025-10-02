@@ -1,6 +1,5 @@
 package bci.core;
 
-import java.util.List;
 
 public class Dvd extends Obra {
     private String _igac;
@@ -11,6 +10,10 @@ public class Dvd extends Obra {
         _realizador = realizador;
         _igac = igac;
 
+    }
+
+    public Criador getcriador(){
+        return _realizador;
     }
 
     public String toString(){

@@ -3,6 +3,7 @@ package bci.app.main;
 import bci.core.LibraryManager;
 import bci.app.exception.FileOpenFailedException;
 import bci.core.exception.UnavailableFileException;
+import java.io.IOException;
 import pt.tecnico.uilib.forms.Form;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
@@ -12,16 +13,21 @@ class DoOpenFile extends Command<LibraryManager> {
 
   DoOpenFile(LibraryManager receiver) {
     super(Label.OPEN_FILE, receiver);
+    addStringField("filename", Prompt.openFile());
   }
 
   @Override
   protected final void execute() throws CommandException {
-  /*
-    try {
+    /*String filename = stringField("filename");
+    _receiver.load(filename);*/
+
+  
+    /*try {
     //FIXME implement command
+    
     } catch (UnavailableFileException efe) {
     throw new FileOpenFailedException(efe);
-    }
-  */
+    }*/
+  
   }
 }

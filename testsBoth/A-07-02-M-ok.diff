@@ -1,26 +1,5 @@
 *** testsBoth/A-07-02-M-ok.out	2025-10-01 12:01:55.000000000 +0100
---- testsBoth/A-07-02-M-ok.outhyp	2025-10-02 12:12:37.702931259 +0100
-***************
-*** 8,14 ****
-  7 - Menu de gestão de requisições
-  0 - Sair
-  Escolha uma opção: 1
-- Ficheiro a abrir: works
-  Menu Principal
-  1 - Abrir ficheiro
-  2 - Guardar ficheiro
---- 8,13 ----
-***************
-*** 18,23 ****
---- 17,24 ----
-  6 - Menu de gestão de obras
-  7 - Menu de gestão de requisições
-  0 - Sair
-+ Escolha uma opção: works
-+ Número inválido!
-  Escolha uma opção: 6
-  Menu de obras
-  1 - Mostrar obra
+--- testsBoth/A-07-02-M-ok.outhyp	2025-10-02 20:30:13.540395226 +0100
 ***************
 *** 27,39 ****
   5 - Alterar inventário de uma obra
@@ -36,4 +15,4 @@
   Menu de obras
   1 - Mostrar obra
   2 - Mostrar todas as obras
---- 28,33 ----
+--- 27,32 ----

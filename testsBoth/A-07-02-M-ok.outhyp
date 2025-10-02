@@ -8,6 +8,7 @@ Menu Principal
 7 - Menu de gestão de requisições
 0 - Sair
 Escolha uma opção: 1
+Ficheiro a abrir: works
 Menu Principal
 1 - Abrir ficheiro
 2 - Guardar ficheiro
@@ -17,8 +18,6 @@ Menu Principal
 6 - Menu de gestão de obras
 7 - Menu de gestão de requisições
 0 - Sair
-Escolha uma opção: works
-Número inválido!
 Escolha uma opção: 6
 Menu de obras
 1 - Mostrar obra

@@ -31,6 +31,10 @@ public class LibraryManager {
     _library.avancaData(n);
   }
 
+  public String getFilename () {
+    return _library.getFilename();
+  }
+
   /**
    * Saves the serialized application's state into the file associated to the current library
    *
@@ -40,7 +44,7 @@ public class LibraryManager {
    **/
   public void save() throws MissingFileAssociationException, FileNotFoundException, IOException {
     // FIXME implement serialization method
-
+    saveAs(_library.getFilename());
   }
 
   /**
@@ -54,6 +58,7 @@ public class LibraryManager {
    **/
   public void saveAs(String filename) throws FileNotFoundException, MissingFileAssociationException, IOException {
     // FIXME implement serialization method
+    _library.setFilename(filename);
     ObjectOutputStream obOut = null;
     try {
       FileOutputStream fpout = new FileOutputStream(filename);

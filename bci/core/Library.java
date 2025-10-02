@@ -14,6 +14,7 @@ public class Library implements Serializable {
 
   private Dia _dia = new Dia();
   private Parser _parser = new Parser(this);
+  private String _filename;
   
   public Library () {
     
@@ -25,6 +26,14 @@ public class Library implements Serializable {
 
   public void avancaData (int n) {
     _dia.avanca(n);
+  }
+
+  protected void setFilename (String filename) {
+    _filename = filename;
+  }
+
+  public String getFilename () {
+    return _filename;
   }
 
   /**

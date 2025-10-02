@@ -2,7 +2,7 @@ package bci.core;
 
 import bci.core.exception.UnrecognizedEntryException;
 import java.io.*;
-// FIXME import classes
+import java.util.zip.DeflaterOutputStream;
 
 /**
  * Class that represents the library as a whole.
@@ -14,9 +14,35 @@ public class Library implements Serializable {
   private static final long serialVersionUID = 202501101348L;
 
   private Dia _dia = new Dia();
+  private Parser _parser = new Parser(this);
   
   public Library () {
     
+  }
+
+  public Object readObject(String inputFilename) throws IOException, ClassNotFoundException {
+    ObjectInputStream objIn = null;
+    try {
+      objIn = new ObjectInputStream(new FileInputStream(inputFilename));
+      Object anObject = objIn.readObject();
+      return anObject;
+    } finally {
+      if (objIn != null)
+      objIn.close();
+    }
+  }
+
+  public void saveObject(String filename, Object obj) throws IOException {
+    ObjectOutputStream obOut = null;
+    try {
+      FileOutputStream fpout = new FileOutputStream(filename);
+      DeflaterOutputStream dOut = new DeflaterOutputStream(fpout);
+      obOut = new ObjectOutputStream(dOut);
+      obOut.writeObject(obj);
+    } finally {
+      if (obOut != null)
+      obOut.close();
+    }
   }
   
   public Dia getData () {
@@ -37,5 +63,6 @@ public class Library implements Serializable {
    **/
   void importFile(String filename) throws UnrecognizedEntryException, IOException /* FIXME maybe other exceptions */  {
     //FIXME implement method
+    _parser.parseFile(filename);
   }
 }

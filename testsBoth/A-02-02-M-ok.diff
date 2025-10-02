@@ -1,0 +1,15 @@
+*** testsBoth/A-02-02-M-ok.out	2025-10-01 12:01:54.000000000 +0100
+--- testsBoth/A-02-02-M-ok.outhyp	2025-10-02 10:02:33.183376562 +0100
+***************
+*** 16,25 ****
+  5 - Alterar inventário de uma obra
+  0 - Sair
+  Escolha uma opção: 2
+- 1 - 22 de 22 - Livro - A arte de sobreviver no 36 - 30 - Ficção - Joao Fonseca - 1234567892
+- 2 - 50 de 50 - Livro - Bairro Alto e o Budismo Zen - 25 - Ficção - Zun Tse Fonseca - 1234567891
+- 3 - 50 de 50 - Livro - Dicionário de Programação - 20 - Referência - Odete Fonseca - 1234567890
+- 4 - 5 de 5 - Livro - Analise Matematica sem Mestre - 29 - Técnica e Científica - Carlos Fonseca - 1234567890
+  Menu de obras
+  1 - Mostrar obra
+  2 - Mostrar todas as obras
+--- 16,21 ----

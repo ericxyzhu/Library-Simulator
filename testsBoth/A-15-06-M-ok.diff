@@ -1,0 +1,87 @@
+*** testsBoth/A-15-06-M-ok.out	2025-10-01 12:01:55.000000000 +0100
+--- testsBoth/A-15-06-M-ok.outhyp	2025-10-02 10:02:35.207233575 +0100
+***************
+*** 16,23 ****
+  5 - Alterar inventário de uma obra
+  0 - Sair
+  Escolha uma opção: 4
+- Introduza o identificador do criador: qwerweqrw
+- Mostrar todas as obras de um criador: Operação inválida: O criador 'qwerweqrw' não existe.
+  Menu de obras
+  1 - Mostrar obra
+  2 - Mostrar todas as obras
+--- 16,21 ----
+***************
+*** 25,33 ****
+  4 - Mostrar todas as obras de um criador
+  5 - Alterar inventário de uma obra
+  0 - Sair
+  Escolha uma opção: 4
+- Introduza o identificador do criador: Joao
+- Mostrar todas as obras de um criador: Operação inválida: O criador 'Joao' não existe.
+  Menu de obras
+  1 - Mostrar obra
+  2 - Mostrar todas as obras
+--- 23,31 ----
+  4 - Mostrar todas as obras de um criador
+  5 - Alterar inventário de uma obra
+  0 - Sair
++ Escolha uma opção: qwerweqrw
++ Número inválido!
+  Escolha uma opção: 4
+  Menu de obras
+  1 - Mostrar obra
+  2 - Mostrar todas as obras
+***************
+*** 35,43 ****
+  4 - Mostrar todas as obras de um criador
+  5 - Alterar inventário de uma obra
+  0 - Sair
+  Escolha uma opção: 4
+- Introduza o identificador do criador: Fonseca
+- Mostrar todas as obras de um criador: Operação inválida: O criador 'Fonseca' não existe.
+  Menu de obras
+  1 - Mostrar obra
+  2 - Mostrar todas as obras
+--- 33,41 ----
+  4 - Mostrar todas as obras de um criador
+  5 - Alterar inventário de uma obra
+  0 - Sair
++ Escolha uma opção: Joao
++ Número inválido!
+  Escolha uma opção: 4
+  Menu de obras
+  1 - Mostrar obra
+  2 - Mostrar todas as obras
+***************
+*** 45,53 ****
+  4 - Mostrar todas as obras de um criador
+  5 - Alterar inventário de uma obra
+  0 - Sair
+  Escolha uma opção: 4
+- Introduza o identificador do criador:  Fonseca
+- Mostrar todas as obras de um criador: Operação inválida: O criador ' Fonseca' não existe.
+  Menu de obras
+  1 - Mostrar obra
+  2 - Mostrar todas as obras
+--- 43,51 ----
+  4 - Mostrar todas as obras de um criador
+  5 - Alterar inventário de uma obra
+  0 - Sair
++ Escolha uma opção: Fonseca
++ Número inválido!
+  Escolha uma opção: 4
+  Menu de obras
+  1 - Mostrar obra
+  2 - Mostrar todas as obras
+***************
+*** 55,60 ****
+--- 53,60 ----
+  4 - Mostrar todas as obras de um criador
+  5 - Alterar inventário de uma obra
+  0 - Sair
++ Escolha uma opção:  Fonseca
++ Número inválido!
+  Escolha uma opção: 0
+  Menu Principal
+  1 - Abrir ficheiro

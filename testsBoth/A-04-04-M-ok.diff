@@ -1,0 +1,53 @@
+*** testsBoth/A-04-04-M-ok.out	2025-10-01 12:01:54.000000000 +0100
+--- testsBoth/A-04-04-M-ok.outhyp	2025-10-02 10:02:33.535077615 +0100
+***************
+*** 16,23 ****
+  5 - Alterar inventário de uma obra
+  0 - Sair
+  Escolha uma opção: 1
+! Introduza o número da obra: 3
+! 3 - 10 de 10 - DVD - Era uma vez na Amadora - 20 - Ficção - Fernando Fonseca - 200505550
+  Menu de obras
+  1 - Mostrar obra
+  2 - Mostrar todas as obras
+--- 16,29 ----
+  5 - Alterar inventário de uma obra
+  0 - Sair
+  Escolha uma opção: 1
+! Menu de obras
+! 1 - Mostrar obra
+! 2 - Mostrar todas as obras
+! 3 - Efectuar pesquisa de termos
+! 4 - Mostrar todas as obras de um criador
+! 5 - Alterar inventário de uma obra
+! 0 - Sair
+! Escolha uma opção: 3
+  Menu de obras
+  1 - Mostrar obra
+  2 - Mostrar todas as obras
+***************
+*** 26,33 ****
+  5 - Alterar inventário de uma obra
+  0 - Sair
+  Escolha uma opção: 1
+! Introduza o número da obra: 7
+! 7 - 5 de 5 - DVD - Lumiar Selvagem - 20 - Ficção - Pedro Fonseca - 200505551
+  Menu de obras
+  1 - Mostrar obra
+  2 - Mostrar todas as obras
+--- 32,46 ----
+  5 - Alterar inventário de uma obra
+  0 - Sair
+  Escolha uma opção: 1
+! Menu de obras
+! 1 - Mostrar obra
+! 2 - Mostrar todas as obras
+! 3 - Efectuar pesquisa de termos
+! 4 - Mostrar todas as obras de um criador
+! 5 - Alterar inventário de uma obra
+! 0 - Sair
+! Escolha uma opção: 7
+! Opção inválida!
+  Menu de obras
+  1 - Mostrar obra
+  2 - Mostrar todas as obras

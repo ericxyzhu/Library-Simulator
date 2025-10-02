@@ -2,7 +2,7 @@ package bci.core;
 
 import java.io.Serializable;
 
-public class Utente implements Serializable {
+public class Utente implements Serializable, Comparable<Utente> {
 
     private int _id;
     private String _nome;
@@ -10,6 +10,14 @@ public class Utente implements Serializable {
     private boolean _atividade = true;
     private int _multa = 0;
     private tipoUtente _tipo = tipoUtente.NORMAL;
+
+    public int compareTo (Utente utente){
+        int ret = _nome.compareTo(utente._nome);
+        if (ret == 0){
+            ret = _id - utente._id;
+        }
+        return ret;
+    }
 
     public Utente (int id, String nome, String email) {
         _id = id;

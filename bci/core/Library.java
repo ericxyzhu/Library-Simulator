@@ -2,6 +2,7 @@ package bci.core;
 
 import bci.core.exception.UnrecognizedEntryException;
 import java.io.*;
+import java.util.*;
 
 /**
  * Class that represents the library as a whole.
@@ -15,9 +16,12 @@ public class Library implements Serializable {
   private Dia _dia = new Dia();
   private Parser _parser = new Parser(this);
   private String _filename;
+  private Map<Integer, Obra> _obras;
+  private Set<Utente> _utentes;
   
   public Library () {
-    
+    _obras = new TreeMap<>();
+    _utentes = new TreeSet<>();
   }
   
   public Dia getData () {

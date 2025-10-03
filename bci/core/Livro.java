@@ -22,15 +22,16 @@ public class Livro extends Obra {
     }
 
     public String getAllCriadores(){
-        List<String> criadoresNome = new ArrayList<>();
+        String ret = new String();
         for(int i = 0; i < _creators.size(); i++){
             Criador c = _creators.get (i);
             if ( i == (_creators.size() - 1) )
-                criadoresNome.add(c.getnome());
+                ret += c.getnome();
             else
-                criadoresNome.add(c.getnome() + "; ");
+                ret += c.getnome() + "; ";
+
         }
-        return String.join("", criadoresNome);
+        return ret;
     }
 
 

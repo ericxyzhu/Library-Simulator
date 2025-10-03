@@ -52,6 +52,9 @@ public class LibraryManager {
     return _library.getAllUtenteString();
   }
 
+  public String getObra (){
+
+  }
   /**
    * Saves the serialized application's state into the file associated to the current library
    *

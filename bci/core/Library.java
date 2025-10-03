@@ -13,6 +13,10 @@ public class Library implements Serializable {
   @Serial
   private static final long serialVersionUID = 202501101348L;
 
+  private int _nextUtenteId = 1;
+  private int _nextObraId = 1;
+  private int _numUtentes = 0;
+  private int _numObras = 0;
   private Dia _dia = new Dia();
   private Parser _parser = new Parser(this);
   private String _filename;
@@ -38,6 +42,44 @@ public class Library implements Serializable {
 
   public String getFilename () {
     return _filename;
+  }
+
+  public int registaUtente (String nome, String email) {
+    Utente utente = new Utente(_nextUtenteId, nome, email);
+    _nextUtenteId++;
+    _numUtentes++;
+    _utentes.add(utente);
+    return _nextUtenteId - 1;
+  }
+
+  public Utente getUtente (int id) {
+    for (Utente utente : _utentes) {
+      if (utente.getId() == id) {
+        return utente;
+      }
+    }
+    return null;
+  }
+
+  public List<Utente> getUtentes () {
+    List<Utente> ret = new ArrayList<>();
+    for (Utente utente : _utentes) {
+      ret.add(utente);
+    }
+    return ret;
+  }
+
+  public String getAllUtenteString () {
+    String ret = new String();
+    int cnt = 0;
+    for (Utente utente : _utentes) {
+      ret += utente.utenteString();
+      cnt++;
+      if (cnt < _numUtentes) {
+        ret += "\n";
+      }
+    }
+    return ret;
   }
 
   /**

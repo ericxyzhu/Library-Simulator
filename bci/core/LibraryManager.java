@@ -2,6 +2,7 @@ package bci.core;
 
 import bci.core.exception.*;
 import java.io.*;
+import java.util.*;
 import java.util.zip.DeflaterOutputStream;
 
 // FIXME import classes
@@ -33,6 +34,22 @@ public class LibraryManager {
 
   public String getFilename () {
     return _library.getFilename();
+  }
+
+  public int registaUtente (String nome, String email) {
+    return _library.registaUtente(nome, email);
+  }
+
+  public Utente getUtente (int id) {
+    return _library.getUtente(id);
+  }
+
+  public List<Utente> getUtentes () {
+    return _library.getUtentes();
+  }
+
+  public String getAllUtenteString () {
+    return _library.getAllUtenteString();
   }
 
   /**

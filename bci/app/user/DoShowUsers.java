@@ -16,5 +16,7 @@ class DoShowUsers extends Command<LibraryManager> {
   @Override
   protected final void execute() {
     //FIXME implement command
+    _display.add(_receiver.getAllUtenteString());
+    _display.display();
   }
 }

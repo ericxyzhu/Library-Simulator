@@ -1,8 +1,9 @@
 package bci.core;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Criador {
+public class Criador implements Serializable {
     private String _nome;
     private Set<Obra> _obras;
     public Criador(String nome){

@@ -22,10 +22,12 @@ public class Library implements Serializable {
   private String _filename;
   private Map<Integer, Obra> _obras;
   private Set<Utente> _utentes;
+  private Map<String, Criador> _criadores;
   
   public Library () {
     _obras = new TreeMap<>();
     _utentes = new TreeSet<>();
+    _obras = new TreeMap<>();
   }
   
   public Dia getData () {
@@ -51,6 +53,7 @@ public class Library implements Serializable {
     _utentes.add(utente);
     return _nextUtenteId - 1;
   }
+
 
   public Utente getUtente (int id) {
     for (Utente utente : _utentes) {
@@ -82,7 +85,17 @@ public class Library implements Serializable {
     return ret;
   }
 
-  public 
+  public Obra getObra (int id){
+    if (!(_obras.containsKey(id))) return null; // FIXME Tem que lançar exceção
+    return _obras.get(id); 
+
+  }
+  
+  public Set<Obra> getObrasCriador (String nome){
+    return _criadores.get(nome).obras();
+
+
+  }
 
   /**
    * Read text input file at the beginning of the program and populates the

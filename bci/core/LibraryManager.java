@@ -56,8 +56,16 @@ public class LibraryManager {
     return _library.getObra(id);
   }
 
-  public Obra getObrasCriador (String nome){
-    return 
+  public String getAllObrasString(){
+    return _library.getAllObrasString();
+  }
+  
+  public Set<Obra> getObrasCriador (String nome){
+    return _library.getObrasCriador(nome);
+  }
+
+  public String getObrasCriadorString (String nome){
+    return _library.getObrasCriadorString(nome);
   }
   /**
    * Saves the serialized application's state into the file associated to the current library

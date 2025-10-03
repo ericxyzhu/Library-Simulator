@@ -27,7 +27,7 @@ public class Library implements Serializable {
   public Library () {
     _obras = new TreeMap<>();
     _utentes = new TreeSet<>();
-    _obras = new TreeMap<>();
+    _criadores = new TreeMap<>();
   }
   
   public Dia getData () {
@@ -90,11 +90,25 @@ public class Library implements Serializable {
     return _obras.get(id); 
 
   }
+
+  public String getAllObrasString(){
+    String ret = new String();
+    for(Obra obra: _obras.values())
+      ret += obra.getDescription();
+    return ret;
+  }
   
   public Set<Obra> getObrasCriador (String nome){
     return _criadores.get(nome).obras();
+  }
 
-
+  public String getObrasCriadorString (String nome){
+    String ret = new String();
+    Set<Obra> list = new TreeSet<>();
+    list = getObrasCriador(nome);
+    for(Obra obra: list)
+      ret += obra.getDescription();
+    return ret;
   }
 
   /**

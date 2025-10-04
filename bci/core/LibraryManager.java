@@ -52,7 +52,15 @@ public class LibraryManager {
     return _library.getAllUtenteString();
   }
 
-  public Obra getObra (int id){
+  public void addLivro(String title , int price, Categoria categoria, int copies, String isbn, List<Criador> criadores ){
+    _library.addLivro(title, price, categoria, copies, isbn, criadores);
+  }
+
+  public void addDvd(String title , int price, Categoria categoria, int copies, String igac, Criador realizador ){
+    _library.addDvd(title, price, categoria, copies, igac, realizador);
+  }
+
+  public Obra getObra (int id) throws WorkNotFoundException{
     return _library.getObra(id);
   }
 
@@ -60,11 +68,11 @@ public class LibraryManager {
     return _library.getAllObrasString();
   }
   
-  public Set<Obra> getObrasCriador (String nome){
+  public Set<Obra> getObrasCriador (String nome) throws CreatorNotFoundException{
     return _library.getObrasCriador(nome);
   }
 
-  public String getObrasCriadorString (String nome){
+  public String getObrasCriadorString (String nome) throws CreatorNotFoundException{
     return _library.getObrasCriadorString(nome);
   }
   /**

@@ -1,7 +1,5 @@
 package bci.core;
 
-import bci.core.exception.EmptyNameException;
-import bci.core.exception.UnrecognizedEntryException;
 import bci.core.exception.*;
 import java.io.*;
 import java.util.*;
@@ -94,8 +92,23 @@ public class Library implements Serializable {
     return ret;
   }
 
-  public Obra getObra (int id){
-    if (!(_obras.containsKey(id))) return null; // FIXME Tem que lançar exceção
+  public void addLivro(String title , int price, Categoria categoria, int copies, String isbn, List<Criador> criadores ){
+    Obra obra = new Livro(title, price, categoria, copies, isbn, criadores);
+    _obras.put(_nextObraId, obra);
+    _nextObraId ++;
+    _numObras ++;
+  }
+
+  public void addDvd(String title , int price, Categoria categoria, int copies, String igac, Criador realizador ){
+    Obra obra = new Dvd(title, price, categoria, copies, igac, realizador);
+    _obras.put(_nextObraId, obra);
+    _nextObraId ++;
+    _numObras ++;
+  }
+
+
+  public Obra getObra (int id) throws WorkNotFoundException{
+    if (!(_obras.containsKey(id))) throw new WorkNotFoundException(id); 
     return _obras.get(id); 
 
   }
@@ -112,11 +125,12 @@ public class Library implements Serializable {
     return ret;
   }
   
-  public Set<Obra> getObrasCriador (String nome){
+  public Set<Obra> getObrasCriador (String nome) throws CreatorNotFoundException{
+    if (_criadores.get(nome) == null ) throw new CreatorNotFoundException(nome);
     return _criadores.get(nome).obras();
   }
 
-  public String getObrasCriadorString (String nome){
+  public String getObrasCriadorString (String nome) throws CreatorNotFoundException{
     String ret = new String();
     Set<Obra> list = new TreeSet<>();
     int cont = 0;

@@ -102,8 +102,13 @@ public class Library implements Serializable {
 
   public String getAllObrasString(){
     String ret = new String();
-    for(Obra obra: _obras.values())
+    int cont = 0;
+    for(Obra obra: _obras.values()){
       ret += obra.getDescription();
+      cont++;
+      if (cont < _numObras)
+        ret += "\n";
+    }
     return ret;
   }
   
@@ -114,9 +119,14 @@ public class Library implements Serializable {
   public String getObrasCriadorString (String nome){
     String ret = new String();
     Set<Obra> list = new TreeSet<>();
+    int cont = 0;
     list = getObrasCriador(nome);
-    for(Obra obra: list)
+    for(Obra obra: list){
+      cont++;
       ret += obra.getDescription();
+      if(cont < list.size())
+        ret += "\n";
+    }
     return ret;
   }
 

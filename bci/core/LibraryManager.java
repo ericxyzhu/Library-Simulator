@@ -40,7 +40,7 @@ public class LibraryManager {
     return _library.registaUtente(nome, email);
   }
 
-  public Utente getUtente (int id) {
+  public Utente getUtente (int id) throws UserNotFoundException {
     return _library.getUtente(id);
   }
 

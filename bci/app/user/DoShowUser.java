@@ -2,6 +2,7 @@ package bci.app.user;
 
 import bci.core.LibraryManager;
 import bci.app.exception.NoSuchUserException;
+import bci.core.exception.*;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
 //FIXME add more imports if needed
@@ -21,7 +22,12 @@ class DoShowUser extends Command<LibraryManager> {
   protected final void execute() throws CommandException {
     //FIXME implement command
     int id = integerField("id");
-    _display.addLine(_receiver.getUtente(id).utenteString());
+    try {
+      _display.addLine(_receiver.getUtente(id).utenteString());
     _display.display();
+    } catch (UserNotFoundException unfe) {
+      throw new NoSuchUserException(id);
+    }
+    
   }
 }

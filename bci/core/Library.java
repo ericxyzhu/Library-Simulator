@@ -2,6 +2,7 @@ package bci.core;
 
 import bci.core.exception.EmptyNameException;
 import bci.core.exception.UnrecognizedEntryException;
+import bci.core.exception.*;
 import java.io.*;
 import java.util.*;
 
@@ -60,13 +61,16 @@ public class Library implements Serializable {
   }
 
 
-  public Utente getUtente (int id) {
+  public Utente getUtente (int id) throws UserNotFoundException {
+    if (id >= _nextUtenteId) {
+      throw new UserNotFoundException(id);
+    }
     for (Utente utente : _utentes) {
       if (utente.getId() == id) {
         return utente;
       }
     }
-    return null;
+    throw new UserNotFoundException(id);
   }
 
   public List<Utente> getUtentes () {

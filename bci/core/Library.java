@@ -144,6 +144,14 @@ public class Library implements Serializable {
     return ret;
   }
 
+  public void addCriador(String nome, Set<Obra> obras){
+    Criador criador = new Criador(nome);
+    for (Obra obra: obras){
+      criador.add(obra);
+    }
+    _criadores.put(nome, criador);
+  }
+
   /**
    * Read text input file at the beginning of the program and populates the
    * the state of this library with the domain entities represented in the text file.

@@ -75,6 +75,9 @@ public class LibraryManager {
   public String getObrasCriadorString (String nome) throws CreatorNotFoundException{
     return _library.getObrasCriadorString(nome);
   }
+  public void addCriador(String nome, Set<Obra> obras){
+    _library.addCriador(nome, obras);
+  }
   /**
    * Saves the serialized application's state into the file associated to the current library
    *

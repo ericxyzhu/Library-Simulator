@@ -36,7 +36,7 @@ public class LibraryManager {
     return _library.getFilename();
   }
 
-  public int registaUtente (String nome, String email) {
+  public int registaUtente (String nome, String email) throws EmptyNameException {
     return _library.registaUtente(nome, email);
   }
 

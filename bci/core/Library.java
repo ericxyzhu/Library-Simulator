@@ -1,5 +1,6 @@
 package bci.core;
 
+import bci.core.exception.EmptyNameException;
 import bci.core.exception.UnrecognizedEntryException;
 import java.io.*;
 import java.util.*;
@@ -46,12 +47,16 @@ public class Library implements Serializable {
     return _filename;
   }
 
-  public int registaUtente (String nome, String email) {
-    Utente utente = new Utente(_nextUtenteId, nome, email);
-    _nextUtenteId++;
-    _numUtentes++;
-    _utentes.add(utente);
-    return _nextUtenteId - 1;
+  public int registaUtente (String nome, String email) throws EmptyNameException {
+    if (nome.length() == 0 || email.length() == 0){
+      throw new EmptyNameException();
+    } else {
+      Utente utente = new Utente(_nextUtenteId, nome, email);
+      _nextUtenteId++;
+      _numUtentes++;
+      _utentes.add(utente);
+      return _nextUtenteId - 1;
+    }
   }
 
 

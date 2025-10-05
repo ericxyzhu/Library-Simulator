@@ -21,7 +21,7 @@ class DoDisplayWorksByCreator extends Command<LibraryManager> {
   protected final void execute() throws CommandException {
     String nome = stringField("nome");
     try {
-        _display.add(_receiver.getObrasCriadorString(nome));
+        _display.addLine(_receiver.getObrasCriadorString(nome));
         _display.display();
     } catch (CreatorNotFoundException cnfe) {
       throw new NoSuchCreatorException(nome);

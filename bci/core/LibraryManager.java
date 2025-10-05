@@ -87,7 +87,11 @@ public class LibraryManager {
    **/
   public void save() throws MissingFileAssociationException, FileNotFoundException, IOException {
     // FIXME implement serialization method
-    saveAs(_library.getFilename());
+    if (_library.getFilename() == null) {
+      throw new MissingFileAssociationException();
+    } else {
+      saveAs(_library.getFilename());
+    }
   }
 
   /**

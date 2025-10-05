@@ -23,10 +23,9 @@ public abstract class Obra implements Comparable<Obra> , Serializable {
         _disponiveis = copies;
 
     }
-      
+
     @Override  
     public int compareTo (Obra obra){
-        System.out.println(this._title.compareTo(obra._title));
         return this._title.compareTo(obra._title);
 
     }

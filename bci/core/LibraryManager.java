@@ -4,6 +4,7 @@ import bci.core.exception.*;
 import java.io.*;
 import java.util.*;
 import java.util.zip.DeflaterOutputStream;
+import java.util.zip.InflaterInputStream;
 
 // FIXME import classes
 
@@ -130,7 +131,9 @@ public class LibraryManager {
     // FIXME implement serialization method
     ObjectInputStream objIn = null;
     try {
-      objIn = new ObjectInputStream(new FileInputStream(filename));
+      FileInputStream fpin = new FileInputStream(filename);
+      InflaterInputStream inflateIn = new InflaterInputStream(fpin);
+      objIn = new ObjectInputStream(inflateIn);
       _library = (Library)objIn.readObject();
     } catch (IOException ioe) {
       throw new UnavailableFileException(filename);

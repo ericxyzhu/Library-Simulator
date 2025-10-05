@@ -18,15 +18,15 @@ class DoSaveFile extends Command<LibraryManager> {
 
   DoSaveFile(LibraryManager receiver) {
     super(Label.SAVE_FILE, receiver);
-    if (_receiver.getFilename() == null){
-      addStringField("filename", Prompt.newSaveAs());
-    }
   }
 
   @Override
   protected final void execute() throws CommandException {
+    if (_receiver.getHasFilename() == false){
+      addStringField("filename", Prompt.newSaveAs());
+    }
     try {
-      if (_receiver.getFilename() != null){
+      if (_receiver.getHasFilename() == true){
         _receiver.save();
       } else {
         String filename = stringField("filename");

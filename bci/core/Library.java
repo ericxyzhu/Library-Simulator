@@ -19,6 +19,7 @@ public class Library implements Serializable {
   private int _numObras = 0;
   private Dia _dia = new Dia();
   private Parser _parser = new Parser(this);
+  private boolean _hasFilename = false;
   private String _filename;
   private Map<Integer, Obra> _obras;
   private Set<Utente> _utentes;
@@ -38,8 +39,16 @@ public class Library implements Serializable {
     _dia.avanca(n);
   }
 
-  protected void setFilename (String filename) {
+  void setHasFilename (boolean bool) {
+    _hasFilename = bool;
+  }
+
+  void setFilename (String filename) {
     _filename = filename;
+  }
+
+  public boolean getHasFilename () {
+    return _hasFilename;
   }
 
   public String getFilename () {

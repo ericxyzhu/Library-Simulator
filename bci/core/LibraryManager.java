@@ -37,6 +37,10 @@ public class LibraryManager {
     return _library.getFilename();
   }
 
+  public boolean getHasFilename () {
+    return _library.getHasFilename();
+  }
+
   public int registaUtente (String nome, String email) throws EmptyNameException {
     return _library.registaUtente(nome, email);
   }
@@ -88,7 +92,7 @@ public class LibraryManager {
    **/
   public void save() throws MissingFileAssociationException, FileNotFoundException, IOException {
     // FIXME implement serialization method
-    if (_library.getFilename() == null) {
+    if (_library.getHasFilename() == false) {
       throw new MissingFileAssociationException();
     } else {
       saveAs(_library.getFilename());
@@ -106,6 +110,7 @@ public class LibraryManager {
    **/
   public void saveAs(String filename) throws FileNotFoundException, MissingFileAssociationException, IOException {
     // FIXME implement serialization method
+    _library.setHasFilename(true);
     _library.setFilename(filename);
     ObjectOutputStream obOut = null;
     try {

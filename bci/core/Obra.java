@@ -66,7 +66,7 @@ public abstract class Obra implements Comparable<Obra> , Serializable {
     public abstract String toString();
 
     String getDescription (){
-        return " " + Integer.toString(_id) + " - " + Integer.toString(_disponiveis) + " de " + Integer.toString(_numberOfCopies) + " - " + this.toString();
+        return Integer.toString(_id) + " - " + Integer.toString(_disponiveis) + " de " + Integer.toString(_numberOfCopies) + " - " + this.toString();
 
     }
 

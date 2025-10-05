@@ -17,7 +17,7 @@ public class Livro extends Obra {
     }
 
     public String toString(){
-        return "Livro -" + super.gettitle() + " - " + super.getprice() + " - " + super.getcategoria() + " - " + this.getAllCriadores() + " - " + _isbn ;
+        return "Livro - " + super.gettitle() + " - " + super.getprice() + " - " + super.getcategoria().toString() + " - " + this.getAllCriadores() + " - " + _isbn ;
 
     }
 

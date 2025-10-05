@@ -69,8 +69,7 @@ class Parser implements Serializable {
     int nCopies = Integer.parseInt(components[6]);
     Categoria category = Categoria.valueOf(components[4]);
     Criador creator = _library.addCriador(components[2].trim());
-
-    _library.addDvd(components[1], price, category, nCopies, components[5], creator); 
+    _library.addDvd(components[1], price, category, nCopies, components[5], creator);  
     // ou cria o DVD (new DVD(...)) e adiciona o dvd às obras da Library
   }
   

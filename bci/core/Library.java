@@ -96,7 +96,7 @@ public class Library implements Serializable {
     Obra obra = new Livro(_nextObraId, title, price, categoria, copies, isbn, criadores);
     _obras.put(_nextObraId, obra);
     for (Criador criador: criadores){
-      criador.add(obra);
+      _criadores.get(criador.getnome()).add(obra);
     }
     _nextObraId ++;
     _numObras ++;
@@ -106,7 +106,7 @@ public class Library implements Serializable {
   public Obra addDvd(String title , int price, Categoria categoria, int copies, String igac, Criador realizador ){
     Obra obra = new Dvd(_nextObraId, title, price, categoria, copies, igac, realizador);
     _obras.put(_nextObraId, obra);
-    realizador.add(obra);
+    _criadores.get(realizador.getnome()).add(obra);
     _nextObraId ++;
     _numObras ++;
     return obra;
@@ -133,7 +133,7 @@ public class Library implements Serializable {
   
   public Set<Obra> getObrasCriador (String nome) throws CreatorNotFoundException{
     if (_criadores.get(nome) == null ) throw new CreatorNotFoundException(nome);
-    return _criadores.get(nome).obras();
+    return Collections.unmodifiableSet(_criadores.get(nome).obras());
   }
 
   public String getObrasCriadorString (String nome) throws CreatorNotFoundException{
@@ -151,6 +151,7 @@ public class Library implements Serializable {
   }
 
   public Criador addCriador(String nome){
+    if( _criadores.containsKey(nome) ) return _criadores.get(nome);
     Criador criador = new Criador(nome);
     _criadores.put(nome, criador);
     return criador;

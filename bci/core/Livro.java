@@ -9,8 +9,8 @@ public class Livro extends Obra {
     private List<Criador> _creators;
 
 
-    public Livro (String title, int price, Categoria categoria, int copies, String isbn, List<Criador> creators){
-        super(title, price, categoria, copies);
+    public Livro (int id, String title, int price, Categoria categoria, int copies, String isbn, List<Criador> creators){
+        super(id, title, price, categoria, copies);
         _isbn = isbn;
         this._creators = new ArrayList <> (creators);
 

@@ -6,7 +6,6 @@ import java.io.Serializable;
 
 
 public abstract class Obra implements Comparable<Obra> , Serializable { 
-    private static int _qtdtotal;
     private int _id;
     private int _price;
     private int _numberOfCopies;
@@ -15,7 +14,8 @@ public abstract class Obra implements Comparable<Obra> , Serializable {
     private int _disponiveis; // Ou então int _usados
     
     
-    public Obra(String title, int price, Categoria categoria, int copies){
+    public Obra(int id, String title, int price, Categoria categoria, int copies){
+        _id = id;
         _title = title;
         _price = price;
         _categoria = categoria;
@@ -36,9 +36,6 @@ public abstract class Obra implements Comparable<Obra> , Serializable {
     public int compareTo (Obra obra){
         return this._title.compareTo(obra._title);
 
-    }
-    public static int getqtdtotal(){
-        return _qtdtotal;
     }
 
     public int getprice(){

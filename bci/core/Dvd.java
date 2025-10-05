@@ -6,8 +6,8 @@ public class Dvd extends Obra {
     private Criador _realizador;
 
     
-    public Dvd (String title, int price, Categoria categoria, int copies, String igac, Criador realizador){
-        super(title, price, categoria, copies);
+    public Dvd (int id, String title, int price, Categoria categoria, int copies, String igac, Criador realizador){
+        super(id, title, price, categoria, copies);
         _realizador = realizador;
         _igac = igac;
 

@@ -93,7 +93,7 @@ public class Library implements Serializable {
   }
 
   public Obra addLivro(String title , int price, Categoria categoria, int copies, String isbn, List<Criador> criadores ){
-    Obra obra = new Livro(title, price, categoria, copies, isbn, criadores);
+    Obra obra = new Livro(_nextObraId, title, price, categoria, copies, isbn, criadores);
     _obras.put(_nextObraId, obra);
     for (Criador criador: criadores){
       criador.add(obra);
@@ -104,7 +104,7 @@ public class Library implements Serializable {
   }
 
   public Obra addDvd(String title , int price, Categoria categoria, int copies, String igac, Criador realizador ){
-    Obra obra = new Dvd(title, price, categoria, copies, igac, realizador);
+    Obra obra = new Dvd(_nextObraId, title, price, categoria, copies, igac, realizador);
     _obras.put(_nextObraId, obra);
     realizador.add(obra);
     _nextObraId ++;

@@ -128,6 +128,8 @@ public class LibraryManager {
     try {
       objIn = new ObjectInputStream(new FileInputStream(filename));
       _library = (Library)objIn.readObject();
+    } catch (IOException ioe) {
+      throw new UnavailableFileException(filename);
     } finally {
       if (objIn != null)
       objIn.close();

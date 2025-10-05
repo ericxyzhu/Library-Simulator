@@ -1,12 +1,12 @@
 *** testsBoth/A-07-02-M-ok.out	2025-10-01 12:01:55.000000000 +0100
---- testsBoth/A-07-02-M-ok.outhyp	2025-10-05 16:05:34.482139902 +0100
+--- testsBoth/A-07-02-M-ok.outhyp	2025-10-05 17:11:36.155707130 +0100
 ***************
 *** 9,14 ****
 --- 9,15 ----
   0 - Sair
   Escolha uma opção: 1
   Ficheiro a abrir: works
-+ Abrir ficheiro: Operação inválida: Problema ao abrir ficheiro: works (No such file or directory)
++ Abrir ficheiro: Operação inválida: Problema ao abrir ficheiro: Erro a processar ficheiro works
   Menu Principal
   1 - Abrir ficheiro
   2 - Guardar ficheiro

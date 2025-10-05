@@ -23,7 +23,7 @@ class DoDisplayWork extends Command<LibraryManager> {
      //FIXME implement command
      int id = integerField("id");
      try {
-      _display.addLine(_receiver.getObra(id).toString());
+      _display.addLine(_receiver.getObra(id).getDescription());
       _display.display();
      } catch (WorkNotFoundException wnfe) {
       throw new NoSuchWorkException(id);

@@ -21,7 +21,7 @@ public class Criador implements Serializable {
         return _nome;
     }
     Set<Obra> obras(){
-        return _obras;
+        return Collections.unmodifiableSet(_obras);
     }
 
     

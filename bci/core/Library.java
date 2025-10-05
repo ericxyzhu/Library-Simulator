@@ -92,18 +92,24 @@ public class Library implements Serializable {
     return ret;
   }
 
-  public void addLivro(String title , int price, Categoria categoria, int copies, String isbn, List<Criador> criadores ){
+  public Obra addLivro(String title , int price, Categoria categoria, int copies, String isbn, List<Criador> criadores ){
     Obra obra = new Livro(title, price, categoria, copies, isbn, criadores);
     _obras.put(_nextObraId, obra);
+    for (Criador criador: criadores){
+      criador.add(obra);
+    }
     _nextObraId ++;
     _numObras ++;
+    return obra;
   }
 
-  public void addDvd(String title , int price, Categoria categoria, int copies, String igac, Criador realizador ){
+  public Obra addDvd(String title , int price, Categoria categoria, int copies, String igac, Criador realizador ){
     Obra obra = new Dvd(title, price, categoria, copies, igac, realizador);
     _obras.put(_nextObraId, obra);
+    realizador.add(obra);
     _nextObraId ++;
     _numObras ++;
+    return obra;
   }
 
 
@@ -144,12 +150,10 @@ public class Library implements Serializable {
     return ret;
   }
 
-  public void addCriador(String nome, Set<Obra> obras){
+  public Criador addCriador(String nome){
     Criador criador = new Criador(nome);
-    for (Obra obra: obras){
-      criador.add(obra);
-    }
     _criadores.put(nome, criador);
+    return criador;
   }
 
   /**

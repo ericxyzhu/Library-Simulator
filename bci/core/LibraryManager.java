@@ -52,12 +52,12 @@ public class LibraryManager {
     return _library.getAllUtenteString();
   }
 
-  public void addLivro(String title , int price, Categoria categoria, int copies, String isbn, List<Criador> criadores ){
-    _library.addLivro(title, price, categoria, copies, isbn, criadores);
+  public Obra addLivro(String title , int price, Categoria categoria, int copies, String isbn, List<Criador> criadores ){
+    return _library.addLivro(title, price, categoria, copies, isbn, criadores);
   }
 
-  public void addDvd(String title , int price, Categoria categoria, int copies, String igac, Criador realizador ){
-    _library.addDvd(title, price, categoria, copies, igac, realizador);
+  public Obra addDvd(String title , int price, Categoria categoria, int copies, String igac, Criador realizador ){
+    return _library.addDvd(title, price, categoria, copies, igac, realizador);
   }
 
   public Obra getObra (int id) throws WorkNotFoundException{
@@ -75,8 +75,8 @@ public class LibraryManager {
   public String getObrasCriadorString (String nome) throws CreatorNotFoundException{
     return _library.getObrasCriadorString(nome);
   }
-  public void addCriador(String nome, Set<Obra> obras){
-    _library.addCriador(nome, obras);
+  public Criador addCriador(String nome){
+    return _library.addCriador(nome);
   }
   /**
    * Saves the serialized application's state into the file associated to the current library

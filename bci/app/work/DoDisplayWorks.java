@@ -15,7 +15,7 @@ class DoDisplayWorks extends Command<LibraryManager> {
 
   @Override
   protected final void execute() {
-    System.out.println("bal");
-    
+    _display.add(_receiver.getAllObrasString());
+    _display.display();
   }
 }

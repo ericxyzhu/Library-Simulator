@@ -16,6 +16,8 @@ Menu de obras
 5 - Alterar inventário de uma obra
 0 - Sair
 Escolha uma opção: 4
+Introduza o identificador do criador: Joao Fonseca
+ 0 - 2 de 2 - Livro -A arte de sobreviver no 36 - 20 - FICTION - Joao Fonseca - 1234567892
 Menu de obras
 1 - Mostrar obra
 2 - Mostrar todas as obras
@@ -23,9 +25,9 @@ Menu de obras
 4 - Mostrar todas as obras de um criador
 5 - Alterar inventário de uma obra
 0 - Sair
-Escolha uma opção: Joao Fonseca
-Número inválido!
 Escolha uma opção: 4
+Introduza o identificador do criador: Fernando Fonseca
+ 0 - 10 de 10 - Dvd -Era uma vez na Amadora - 20 - FICTIONFernando Fonseca - 200505550
 Menu de obras
 1 - Mostrar obra
 2 - Mostrar todas as obras
@@ -33,8 +35,6 @@ Menu de obras
 4 - Mostrar todas as obras de um criador
 5 - Alterar inventário de uma obra
 0 - Sair
-Escolha uma opção: Fernando Fonseca
-Número inválido!
 Escolha uma opção: 0
 Menu Principal
 1 - Abrir ficheiro

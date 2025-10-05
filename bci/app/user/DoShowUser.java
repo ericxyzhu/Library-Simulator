@@ -24,7 +24,7 @@ class DoShowUser extends Command<LibraryManager> {
     int id = integerField("id");
     try {
       _display.addLine(_receiver.getUtente(id).utenteString());
-    _display.display();
+      _display.display();
     } catch (UserNotFoundException unfe) {
       throw new NoSuchUserException(id);
     }

@@ -18,16 +18,17 @@ class DoOpenFile extends Command<LibraryManager> {
 
   @Override
   protected final void execute() throws CommandException {
-    /*String filename = stringField("filename");
-    _receiver.load(filename);*/
-
-  
-    /*try {
+    String filename = stringField("filename");
+    try {
     //FIXME implement command
-    
-    } catch (UnavailableFileException efe) {
-    throw new FileOpenFailedException(efe);
-    }*/
+      _receiver.load(filename);
+    } catch (IOException ioe) {
+      throw new FileOpenFailedException(ioe);
+    } catch (ClassNotFoundException cnfe) {
+      throw new FileOpenFailedException(cnfe);
+    } catch (UnavailableFileException ufe) {
+      throw new FileOpenFailedException(ufe);
+    }
   
   }
 }

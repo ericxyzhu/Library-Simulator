@@ -18,43 +18,82 @@ public class Library implements Serializable {
   private int _numUtentes = 0;
   private int _numObras = 0;
   private Dia _dia = new Dia();
-  private Parser _parser = new Parser(this);
   private boolean _hasFilename = false;
+  private Parser _parser = new Parser(this);
   private String _filename;
   private Map<Integer, Obra> _obras;
   private Set<Utente> _utentes;
   private Map<String, Criador> _criadores;
   
+  /**
+   * Construtor que inicializa uma nova biblioteca vazia
+   * Usa coleções para armazenar os utentes, as obras e criadores
+   */
   public Library () {
     _obras = new TreeMap<>();
     _utentes = new TreeSet<>();
     _criadores = new TreeMap<>();
   }
+
+  /**
+   * Obtém uma cópia da data atual do sistema
+   * 
+   * @return Instância do tipo Dia com a data atual
+   */
   
   public Dia getData () {
     return new Dia(_dia.getDia());
   }
 
+  /**
+   * Avança data do sistema n dias
+   * 
+   * @param n número de dias a avançar
+   */
   public void avancaData (int n) {
     _dia.avanca(n);
   }
 
-  void setHasFilename (boolean bool) {
+  /**
+   * Altera em Biblioteca se esta tem um nome de ficheiro ou não
+   * @param bool true se tiver, false se não tiver
+   */
+  void setHasFilename(boolean bool){
     _hasFilename = bool;
   }
 
+  /**
+   * Guarda nome do ficheiro para a respetiva biblioteca
+   * @param filename nome do ficheiro
+   */
   void setFilename (String filename) {
     _filename = filename;
   }
 
-  public boolean getHasFilename () {
+  /**
+   * Devolve o booleano sobre se a Biblioteca ao não tem nome de ficheiro
+   * @return bool que confirma se Biblioteca tem ou não tem nome de ficheiro
+   */
+  public boolean getHasFilename(){
     return _hasFilename;
   }
-
+  /**
+   * Obtém o nome do ficheiro para a respetiva biblioteca
+   * 
+   * @return nome do ficheiro
+   */
   public String getFilename () {
     return _filename;
   }
 
+  /**
+   * Regista um Utente na Biblioteca
+   * 
+   * @param nome nome do Utente
+   * @param email email do Utente 
+   * @return Id do respetivo Utente
+   * @throws EmptyNameException se o nome ou email do Utente estiverem vazios 
+   */
   public int registaUtente (String nome, String email) throws EmptyNameException {
     if (nome.length() == 0 || email.length() == 0){
       throw new EmptyNameException();
@@ -68,6 +107,13 @@ public class Library implements Serializable {
   }
 
 
+  /**
+   * Obtém Utente pedido
+   * 
+   * @param id Id único ao Utente pedido
+   * @return instância de Utente pedido
+   * @throws UserNotFoundException se o Id não estiver associado a algum Utente
+   */
   public Utente getUtente (int id) throws UserNotFoundException {
     if (id >= _nextUtenteId) {
       throw new UserNotFoundException(id);
@@ -80,6 +126,11 @@ public class Library implements Serializable {
     throw new UserNotFoundException(id);
   }
 
+  /**
+   * Obtém Lista completa de Utentes inscritos na Biblioteca
+   * 
+   * @return Lista completa de Utentes
+   */
   public List<Utente> getUtentes () {
     List<Utente> ret = new ArrayList<>();
     for (Utente utente : _utentes) {
@@ -88,6 +139,11 @@ public class Library implements Serializable {
     return ret;
   }
 
+  /**
+   * Obtém uma String com informações acerca de cada Utente inscrito na Biblioteca
+   * 
+   * @return String com informações dos Utentes
+   */
   public String getAllUtenteString () {
     String ret = new String();
     int cnt = 0;
@@ -101,6 +157,17 @@ public class Library implements Serializable {
     return ret;
   }
 
+  /**
+   * Adiciona um Livro á Biblioteca e aos respetivos Criadores
+   * 
+   * @param title título do Livro
+   * @param price preço do Livro
+   * @param categoria categoria do Livro
+   * @param copies número de cópias do Livro
+   * @param isbn isbn do Livro 
+   * @param criadores Lista de Criadores do Livro
+   * @return instância de Livro criado
+   */
   public Obra addLivro(String title , int price, Categoria categoria, int copies, String isbn, List<Criador> criadores ){
     Obra obra = new Livro(_nextObraId, title, price, categoria, copies, isbn, criadores);
     _obras.put(_nextObraId, obra);
@@ -112,6 +179,17 @@ public class Library implements Serializable {
     return obra;
   }
 
+  /**
+   * Adiciona um Dvd á Biblioteca e ao Criador(realizador)
+   * 
+   * @param title título do Dvd
+   * @param price preço do Dvd
+   * @param categoria categoria do Dvd
+   * @param copies número de cópias do Dvd
+   * @param igac igac do Dvd
+   * @param realizador Criador do Dvd
+   * @return instância de Dvd criado
+   */
   public Obra addDvd(String title , int price, Categoria categoria, int copies, String igac, Criador realizador ){
     Obra obra = new Dvd(_nextObraId, title, price, categoria, copies, igac, realizador);
     _obras.put(_nextObraId, obra);
@@ -121,13 +199,24 @@ public class Library implements Serializable {
     return obra;
   }
 
-
+  /**
+   * Obtém Obra pedida pelo Id único
+   * 
+   * @param id Id respetivo á Obra
+   * @return instância de Obra pedida
+   * @throws WorkNotFoundException se Id não estiver associado a alguma Obra
+   */
   public Obra getObra (int id) throws WorkNotFoundException{
     if (!(_obras.containsKey(id))) throw new WorkNotFoundException(id); 
     return _obras.get(id); 
 
   }
 
+  /**
+   * Obtém as informações completas para cada Obra na Biblioteca
+   * 
+   * @return String com as informações de cada Obra
+   */
   public String getAllObrasString(){
     String ret = new String();
     int cont = 0;
@@ -140,11 +229,25 @@ public class Library implements Serializable {
     return ret;
   }
   
+  /**
+   * Obtém todas a Obras de um Criador
+   * 
+   * @param nome nome do Criador
+   * @return unmodifiable Set das Obras do Criador 
+   * @throws CreatorNotFoundException se não existir um Criador com o nome dado
+   */
   public Set<Obra> getObrasCriador (String nome) throws CreatorNotFoundException{
     if (_criadores.get(nome) == null ) throw new CreatorNotFoundException(nome);
     return Collections.unmodifiableSet(_criadores.get(nome).obras());
   }
 
+  /**
+   * Obtém as informações completas das Obras de um Criador
+   * 
+   * @param nome nome do Criador
+   * @return String com as informações das Obras do Criador
+   * @throws CreatorNotFoundException se não existir um Criador com o nome dado
+   */
   public String getObrasCriadorString (String nome) throws CreatorNotFoundException{
     String ret = new String();
     Set<Obra> list = new TreeSet<>();
@@ -159,6 +262,12 @@ public class Library implements Serializable {
     return ret;
   }
 
+  /**
+   * Adiciona um Criador á Biblioteca
+   * 
+   * @param nome nome do Criador
+   * @return instância do Criador criado
+   */
   public Criador addCriador(String nome){
     if( _criadores.containsKey(nome) ) return _criadores.get(nome);
     Criador criador = new Criador(nome);

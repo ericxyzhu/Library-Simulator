@@ -22,8 +22,8 @@ class DoOpenFile extends Command<LibraryManager> {
     if (_receiver.getIsModified() == true) {
       boolean bool = Form.confirm(Prompt.saveBeforeExit());
       if (bool == true) {
-        DoOpenFile dop = new DoOpenFile(_receiver);
-        dop.execute();
+        DoSaveFile dsp = new DoSaveFile(_receiver);
+        dsp.execute();
       }
     }
     try {

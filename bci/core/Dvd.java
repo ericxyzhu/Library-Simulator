@@ -18,7 +18,7 @@ public class Dvd extends Obra {
     }
 
     public String toString(){
-        return "DVD - " + super.gettitle() + " - " + super.getprice() + " - " + super.getcategoria().toString() + " - " + _realizador.getnome() + " - " + _igac ;
+        return "DVD - " + super.getTitle() + " - " + super.getPrice() + " - " + super.getCategoria().toString() + " - " + _realizador.getNome() + " - " + _igac ;
 
     }
 

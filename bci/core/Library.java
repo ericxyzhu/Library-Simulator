@@ -39,7 +39,7 @@ public class Library implements Serializable {
   /**
    * Obtém uma cópia da data atual do sistema
    * 
-   * @return Instância do tipo Dia com a data atual
+   * @return instância do tipo Dia com a data atual
    */
   
   public Dia getData () {
@@ -189,7 +189,7 @@ public class Library implements Serializable {
     Obra obra = new Livro(_nextObraId, title, price, categoria, copies, isbn, criadores);
     _obras.put(_nextObraId, obra);
     for (Criador criador: criadores){
-      _criadores.get(criador.getnome()).add(obra);
+      _criadores.get(criador.getNome()).add(obra);
     }
     _nextObraId ++;
     _numObras ++;
@@ -210,7 +210,7 @@ public class Library implements Serializable {
   public Obra addDvd(String title , int price, Categoria categoria, int copies, String igac, Criador realizador ){
     Obra obra = new Dvd(_nextObraId, title, price, categoria, copies, igac, realizador);
     _obras.put(_nextObraId, obra);
-    _criadores.get(realizador.getnome()).add(obra);
+    _criadores.get(realizador.getNome()).add(obra);
     _nextObraId ++;
     _numObras ++;
     return obra;
@@ -230,7 +230,7 @@ public class Library implements Serializable {
   }
 
   /**
-   * Obtém as informações completas para cada Obra na Biblioteca
+   * Obtém a descrição para cada Obra na Biblioteca
    * 
    * @return String com as informações de cada Obra
    */

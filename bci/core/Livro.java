@@ -17,7 +17,7 @@ public class Livro extends Obra {
     }
 
     public String toString(){
-        return "Livro - " + super.gettitle() + " - " + super.getprice() + " - " + super.getcategoria().toString() + " - " + this.getAllCriadores() + " - " + _isbn ;
+        return "Livro - " + super.getTitle() + " - " + super.getPrice() + " - " + super.getCategoria().toString() + " - " + this.getAllCriadores() + " - " + _isbn ;
 
     }
 
@@ -26,9 +26,9 @@ public class Livro extends Obra {
         for(int i = 0; i < _creators.size(); i++){
             Criador c = _creators.get (i);
             if ( i == (_creators.size() - 1) )
-                ret += c.getnome();
+                ret += c.getNome();
             else
-                ret += c.getnome() + "; ";
+                ret += c.getNome() + "; ";
 
         }
         return ret;

@@ -101,7 +101,7 @@ public abstract class Obra implements Comparable<Obra> , Serializable {
     }
 
     /**
-     * Devolve uma String com informações específicas de acordo com as subclasses de Obra
+     * Devolve uma String com informações específicas de acordo com a subclasse de Obra
      * @return String com as informações
      */
     public abstract String toString();

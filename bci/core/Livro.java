@@ -3,12 +3,27 @@ package bci.core;
 import java.util.List;
 import java.util.ArrayList;
 
-
+/**
+ * Extende {@link Obra} com atributos específicos a Livro
+ * 
+ * @see Obra
+ */
 public class Livro extends Obra {
     private String _isbn;
     private List<Criador> _creators;
 
-
+    /**
+     * Construtor que cria um Livro com atributos preenchidos,
+     * usa o construtor da Obra para as informações gerais para todas as Obras
+     * 
+     * @param id Id específico para o Livro (específico para cada Obra)
+     * @param title título para o Livro
+     * @param price preço do Livro
+     * @param categoria Categoria do Livro
+     * @param copies número de cópias do Livro
+     * @param isbn isbn do Livro
+     * @param creators Lista de Criadores do Livro
+     */
     public Livro (int id, String title, int price, Categoria categoria, int copies, String isbn, List<Criador> creators){
         super(id, title, price, categoria, copies);
         _isbn = isbn;
@@ -16,11 +31,18 @@ public class Livro extends Obra {
 
     }
 
+    /**
+     * {@inheritDoc}
+     */
     public String toString(){
         return "Livro - " + super.getTitle() + " - " + super.getPrice() + " - " + super.getCategoria().toString() + " - " + this.getAllCriadores() + " - " + _isbn ;
 
     }
 
+    /**
+     * Devolve uma String com os nomes dos Criadores do Livro
+     * @return String com os nomes dos Criadores
+     */
     public String getAllCriadores(){
         String ret = new String();
         for(int i = 0; i < _creators.size(); i++){

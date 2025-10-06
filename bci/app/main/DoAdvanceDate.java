@@ -16,6 +16,7 @@ class DoAdvanceDate extends Command<LibraryManager> {
 
   @Override
   protected final void execute() {
+    _receiver.setIsModified(true);
     Integer num = integerField("number");
     _receiver.avancaData(num);
   }

@@ -41,6 +41,14 @@ public class LibraryManager {
     return _library.getHasFilename();
   }
 
+  public Boolean getIsModified () {
+    return _library.getIsModified();
+  }
+
+  public void setIsModified(boolean bool) {
+    _library.setIsModified(bool);
+  }
+
   public int registaUtente (String nome, String email) throws EmptyNameException {
     return _library.registaUtente(nome, email);
   }
@@ -117,6 +125,7 @@ public class LibraryManager {
       FileOutputStream fpout = new FileOutputStream(filename);
       DeflaterOutputStream dOut = new DeflaterOutputStream(fpout);
       obOut = new ObjectOutputStream(dOut);
+      _library.setIsModified(false);
       obOut.writeObject(_library);
     } finally {
       if (obOut != null)

@@ -28,6 +28,7 @@ class DoRegisterUser extends Command<LibraryManager> {
       int id = _receiver.registaUtente(nome, email);
       _display.addLine(Message.registrationSuccessful(id));
       _display.display();
+      _receiver.setIsModified(true);
     } catch (EmptyNameException ene) {
       throw new UserRegistrationFailedException(nome, email);
     }

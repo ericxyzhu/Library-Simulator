@@ -21,6 +21,7 @@ public class Library implements Serializable {
   private boolean _hasFilename = false;
   private Parser _parser = new Parser(this);
   private String _filename;
+  private boolean _isModified = false;
   private Map<Integer, Obra> _obras;
   private Set<Utente> _utentes;
   private Map<String, Criador> _criadores;
@@ -84,6 +85,22 @@ public class Library implements Serializable {
    */
   public String getFilename () {
     return _filename;
+  }
+
+  /**
+   * Devolve o booleano sobre se a Biblioteca foi modificada
+   * @return bool que confirma se a biblioteca foi modificada
+   */
+  public boolean getIsModified () {
+    return _isModified;
+  }
+
+  /**
+   * Altera o estado da biblioteca sobre se está modificada
+   * @param bool o novo estado da biblioteca sobre se está modificado
+   */
+  public void setIsModified (boolean bool) {
+    _isModified = bool;
   }
 
   /**
@@ -286,5 +303,6 @@ public class Library implements Serializable {
   void importFile(String filename) throws UnrecognizedEntryException, IOException /* FIXME maybe other exceptions */  {
     //FIXME implement method
     _parser.parseFile(filename);
+    _isModified = true;
   }
 }

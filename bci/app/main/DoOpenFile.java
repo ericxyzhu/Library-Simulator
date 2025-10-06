@@ -19,6 +19,13 @@ class DoOpenFile extends Command<LibraryManager> {
   @Override
   protected final void execute() throws CommandException {
     String filename = stringField("filename");
+    if (_receiver.getIsModified() == true) {
+      boolean bool = Form.confirm(Prompt.saveBeforeExit());
+      if (bool == true) {
+        DoOpenFile dop = new DoOpenFile(_receiver);
+        dop.execute();
+      }
+    }
     try {
     //FIXME implement command
       _receiver.load(filename);

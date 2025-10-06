@@ -22,6 +22,7 @@ class DoSaveFile extends Command<LibraryManager> {
 
   @Override
   protected final void execute() throws CommandException {
+    if (_receiver.getIsModified() == false) return;
     if (_receiver.getHasFilename() == false){
       addStringField("filename", Prompt.newSaveAs());
     }

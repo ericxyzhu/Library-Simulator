@@ -19,8 +19,7 @@ public abstract class Obra implements Comparable<Obra> , Serializable {
     private int _numberOfCopies;
     private String _title;
     private Categoria _categoria;
-    private int _disponiveis; // Ou então int _usados
-    
+    private int _disponiveis; 
     /**
      * Construtor que inicializa uma Obra já com atributos preenchidos
      * 

@@ -13,12 +13,11 @@ class DoOpenFile extends Command<LibraryManager> {
 
   DoOpenFile(LibraryManager receiver) {
     super(Label.OPEN_FILE, receiver);
-    addStringField("filename", Prompt.openFile());
+    
   }
 
   @Override
   protected final void execute() throws CommandException {
-    String filename = stringField("filename");
     if (_receiver.getIsModified() == true) {
       boolean bool = Form.confirm(Prompt.saveBeforeExit());
       if (bool == true) {
@@ -26,6 +25,7 @@ class DoOpenFile extends Command<LibraryManager> {
         dsp.execute();
       }
     }
+    String filename = Form.requestString(Prompt.openFile());
     try {
     //FIXME implement command
       _receiver.load(filename);

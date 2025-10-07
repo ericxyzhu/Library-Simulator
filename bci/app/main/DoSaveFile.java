@@ -23,14 +23,11 @@ class DoSaveFile extends Command<LibraryManager> {
   @Override
   protected final void execute() throws CommandException {
     if (_receiver.getIsModified() == false) return;
-    if (_receiver.getHasFilename() == false){
-      addStringField("filename", Prompt.newSaveAs());
-    }
     try {
       if (_receiver.getHasFilename() == true){
         _receiver.save();
       } else {
-        String filename = stringField("filename");
+        String filename = Form.requestString(Prompt.newSaveAs());
         _receiver.saveAs(filename);
       }
     } catch (MissingFileAssociationException mfae) {

@@ -6,7 +6,6 @@ import bci.core.exception.MissingFileAssociationException;
 import java.io.FileNotFoundException;
 import pt.tecnico.uilib.forms.Form;
 import pt.tecnico.uilib.menus.Command;
-// FIXME add more imports if needed
 import pt.tecnico.uilib.menus.CommandException;
 
 import java.io.IOException;
@@ -37,8 +36,5 @@ class DoSaveFile extends Command<LibraryManager> {
     } catch (IOException ioe) {
       throw new FileOpenFailedException(ioe);
     }
-    // FIXME implement command and create a local Form
-    
-    
   }
 }

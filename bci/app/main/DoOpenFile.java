@@ -7,7 +7,6 @@ import java.io.IOException;
 import pt.tecnico.uilib.forms.Form;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
-//FIXME add more imports if needed
 
 class DoOpenFile extends Command<LibraryManager> {
 
@@ -27,7 +26,6 @@ class DoOpenFile extends Command<LibraryManager> {
     }
     String filename = Form.requestString(Prompt.openFile());
     try {
-    //FIXME implement command
       _receiver.load(filename);
     } catch (IOException ioe) {
       throw new FileOpenFailedException(ioe);

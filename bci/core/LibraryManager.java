@@ -6,8 +6,6 @@ import java.util.*;
 import java.util.zip.DeflaterOutputStream;
 import java.util.zip.InflaterInputStream;
 
-// FIXME import classes
-
 /**
  * The façade class. Represents the manager of this application. It manages the current
  * library and works as the interface between the core and user interaction layers.
@@ -17,10 +15,8 @@ public class LibraryManager {
 
   /** The object doing all the actual work. */
   /* The current library */
-  // FIXME: initialize this field
   private Library _library;
 
-  // FIXME: add more fields if needed
   public LibraryManager () {
     _library = new Library();
   }

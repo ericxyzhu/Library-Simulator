@@ -46,8 +46,11 @@ public abstract class Obra implements Comparable<Obra> , Serializable {
      */
     @Override  
     public int compareTo (Obra obra){
-        return this._title.compareTo(obra._title);
-
+        int ret = _title.toLowerCase().compareTo(obra._title.toLowerCase());
+        if (ret == 0) {
+            ret = _id - obra._id;
+        }
+        return ret;
     }
 
     /**

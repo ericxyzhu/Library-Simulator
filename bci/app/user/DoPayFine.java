@@ -3,6 +3,8 @@ package bci.app.user;
 import bci.core.LibraryManager;
 import bci.app.exception.NoSuchUserException;
 import bci.app.exception.UserIsActiveException;
+import bci.core.exception.UserActivityException;
+import bci.core.exception.UserNotFoundException;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
 //FIXME add more imports if needed
@@ -14,11 +16,18 @@ class DoPayFine extends Command<LibraryManager> {
 
   DoPayFine(LibraryManager receiver) {
     super(Label.PAY_FINE, receiver);
-    //FIXME add command fields
+    addIntegerField("id", Prompt.userId());
   }
 
   @Override
   protected final void execute() throws CommandException {
-    //FIXME implement command
+    int id = integerField("id");
+    try {
+      _receiver.pagarMulta(id);
+    } catch (UserNotFoundException unfe) {
+      throw new NoSuchUserException(id);
+    } catch (UserActivityException uae) {
+      throw new UserIsActiveException(id);
+    }
   }
 }

@@ -84,9 +84,15 @@ public class LibraryManager {
   public String getObrasCriadorString (String nome) throws CreatorNotFoundException{
     return _library.getObrasCriadorString(nome);
   }
+
   public Criador addCriador(String nome){
     return _library.addCriador(nome);
   }
+
+  public void pagarMulta (int id) throws UserNotFoundException, UserActivityException {
+    _library.pagarMulta(id);
+  }  
+
   /**
    * Saves the serialized application's state into the file associated to the current library
    *

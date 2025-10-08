@@ -86,4 +86,24 @@ public class Utente implements Serializable, Comparable<Utente> {
     public int getId () {
         return _id;
     }
+
+    public boolean getAtividade () {
+        return _atividade;
+    }
+
+    public void setAtividade (boolean bool) {
+        _atividade = bool;
+    }
+
+    public void limpaMulta () {
+        _multa = 0;
+    }
+
+    public void addMulta (int qtd) {
+        _multa += qtd;
+    }
+
+    public void setTipo (tipoUtente tipo) {
+        _tipo = tipo;
+    }
 }

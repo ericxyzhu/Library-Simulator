@@ -292,6 +292,16 @@ public class Library implements Serializable {
     return criador;
   }
 
+  public void pagarMulta (int id) throws UserNotFoundException, UserActivityException {
+    Utente utente = getUtente(id);
+    if (utente.getAtividade() == true) {
+      throw new UserActivityException(id);
+    } else {
+      utente.limpaMulta();
+      utente.setAtividade(true);
+    }
+  }
+
   /**
    * Read text input file at the beginning of the program and populates the
    * the state of this library with the domain entities represented in the text file.

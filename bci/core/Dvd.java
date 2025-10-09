@@ -32,8 +32,8 @@ public class Dvd extends Obra {
      * Devolve o Criador do Dvd
      * @return instancia de Criador do Dvd
      */
-    public Criador getcriador(){
-        return _realizador;
+    public String getCriadores(){
+        return _realizador.getNome();
     }
 
     /**

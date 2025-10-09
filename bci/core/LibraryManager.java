@@ -93,6 +93,9 @@ public class LibraryManager {
     _library.pagarMulta(id);
   }  
 
+  public String pesquisaTermoObras(String termo){
+    return _library.pesquisaTermoObras(termo);
+  }
   /**
    * Saves the serialized application's state into the file associated to the current library
    *

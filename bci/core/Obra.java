@@ -107,6 +107,8 @@ public abstract class Obra implements Comparable<Obra> , Serializable {
      * @return String com as informações
      */
     public abstract String toString();
+    
+    public abstract String getCriadores();
 
     /**
      * Devolve uma String com a descrição da Obra
@@ -117,21 +119,24 @@ public abstract class Obra implements Comparable<Obra> , Serializable {
 
     }
 
+
     /**
      * Altera o número de cópias da Obra
      * @param obra Obra que queremos alterar
      * @param copies número a adicionar ou a subtrair ao número de cópias
      * @throws Exception se o número de cópias, ou o número de cópias disponivel ficar negativo
      */
-    public void changeCopies (Obra obra, int copies) throws Exception /* Inválido número de cópias exception */ {
+    public boolean changeCopies (int copies){
         if (copies >= 0){
             _numberOfCopies += copies;
             _disponiveis += copies;
+            return true;
         } else {
-            if ((_disponiveis -= copies) < 0)
-               // throw new InvalidException("Número de cópias inválido");
+            if ((_disponiveis + copies < 0))
+               return false;
             _disponiveis = 0;
             _numberOfCopies -= copies;
+            return true;
         }
 
     }

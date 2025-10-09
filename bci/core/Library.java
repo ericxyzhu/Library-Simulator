@@ -302,6 +302,25 @@ public class Library implements Serializable {
     }
   }
 
+  public String pesquisaTermoObras(String termo){
+    String ret = "";
+    boolean linha = false;
+    termo = termo.toLowerCase();
+    for(Obra obras: _obras.values()){
+      if(obras.getTitle().toLowerCase().contains(termo) || obras.getCriadores().toLowerCase().contains(termo))
+        if(linha == true){  
+          ret += "\n";
+          ret += obras.getDescription();
+        }
+        if(linha == false){
+          ret += obras.getDescription();
+          linha = true;
+        }
+    }
+    return ret;
+
+  }
+
   /**
    * Read text input file at the beginning of the program and populates the
    * the state of this library with the domain entities represented in the text file.

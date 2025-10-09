@@ -35,7 +35,7 @@ public class Livro extends Obra {
      * {@inheritDoc}
      */
     public String toString(){
-        return "Livro - " + super.getTitle() + " - " + super.getPrice() + " - " + super.getCategoria().toString() + " - " + this.getAllCriadores() + " - " + _isbn ;
+        return "Livro - " + super.getTitle() + " - " + super.getPrice() + " - " + super.getCategoria().toString() + " - " + this.getCriadores() + " - " + _isbn ;
 
     }
 
@@ -43,7 +43,7 @@ public class Livro extends Obra {
      * Devolve uma String com os nomes dos Criadores do Livro
      * @return String com os nomes dos Criadores
      */
-    public String getAllCriadores(){
+    public String getCriadores(){
         String ret = new String();
         for(int i = 0; i < _creators.size(); i++){
             Criador c = _creators.get (i);

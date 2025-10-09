@@ -45,6 +45,13 @@ public class Dvd extends Obra {
 
     }
 
+    public boolean searchSpecificObras(String termo){
+        if(super.getTitle().toLowerCase().contains(termo.toLowerCase()) || _realizador.getNome().toLowerCase().contains(termo.toLowerCase())){
+            return true;
+        }
+        return false;
+    }
+
 
 
 

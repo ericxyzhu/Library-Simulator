@@ -110,6 +110,8 @@ public abstract class Obra implements Comparable<Obra> , Serializable {
     
     public abstract String getCriadores();
 
+    public abstract boolean searchSpecificObras(String termo);
+
     /**
      * Devolve uma String com a descrição da Obra
      * @return String com descrição
@@ -127,18 +129,12 @@ public abstract class Obra implements Comparable<Obra> , Serializable {
      * @throws Exception se o número de cópias, ou o número de cópias disponivel ficar negativo
      */
     public boolean changeCopies (int copies){
-        if (copies >= 0){
+        if (_disponiveis + copies >= 0){
             _numberOfCopies += copies;
             _disponiveis += copies;
             return true;
-        } else {
-            if ((_disponiveis + copies < 0))
-               return false;
-            _disponiveis = 0;
-            _numberOfCopies -= copies;
-            return true;
-        }
-
+        } else 
+         return false;
     }
 
 }

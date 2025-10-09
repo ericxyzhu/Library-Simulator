@@ -56,5 +56,13 @@ public class Livro extends Obra {
         return ret;
     }
 
-
+    public boolean searchSpecificObras(String termo){
+        if (super.getTitle().toLowerCase().contains(termo.toLowerCase()))
+            return true;
+        for (Criador criador: _creators){
+            if(criador.getNome().toLowerCase().contains(termo.toLowerCase()))
+                return true;
+        }
+        return false;
+    }
 }

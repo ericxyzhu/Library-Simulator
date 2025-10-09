@@ -305,9 +305,8 @@ public class Library implements Serializable {
   public String pesquisaTermoObras(String termo){
     String ret = "";
     boolean linha = false;
-    termo = termo.toLowerCase();
     for(Obra obras: _obras.values()){
-      if(obras.getTitle().toLowerCase().contains(termo) || obras.getCriadores().toLowerCase().contains(termo))
+      if(obras.searchSpecificObras(termo) == true){
         if(linha == true){  
           ret += "\n";
           ret += obras.getDescription();
@@ -316,6 +315,7 @@ public class Library implements Serializable {
           ret += obras.getDescription();
           linha = true;
         }
+      }
     }
     return ret;
 

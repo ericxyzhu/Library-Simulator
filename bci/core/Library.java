@@ -267,9 +267,8 @@ public class Library implements Serializable {
    */
   public String getObrasCriadorString (String nome) throws CreatorNotFoundException{
     String ret = new String();
-    Set<Obra> list = new TreeSet<>();
+    Set<Obra> list = getObrasCriador(nome);
     int cont = 0;
-    list = getObrasCriador(nome);
     for(Obra obra: list){
       cont++;
       ret += obra.getDescription();
@@ -303,7 +302,7 @@ public class Library implements Serializable {
   }
 
   public String pesquisaTermoObras(String termo){
-    String ret = "";
+    String ret = new String();
     boolean linha = false;
     for(Obra obras: _obras.values()){
       if(obras.searchSpecificObras(termo) == true){
@@ -329,8 +328,7 @@ public class Library implements Serializable {
    * @throws UnrecognizedEntryException if some entry is not correct
    * @throws IOException if there is an IO error while processing the text file
    **/
-  void importFile(String filename) throws UnrecognizedEntryException, IOException /* FIXME maybe other exceptions */  {
-    //FIXME implement method
+  void importFile(String filename) throws UnrecognizedEntryException, IOException {
     _parser.parseFile(filename);
     _isModified = true;
   }

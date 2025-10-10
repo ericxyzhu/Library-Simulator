@@ -1,6 +1,7 @@
 package bci.core;
 
 import java.io.Serializable;
+import java.util.*;
 
 /**
  * Representa a classe Utente
@@ -15,7 +16,8 @@ public class Utente implements Serializable, Comparable<Utente> {
     private String _email;
     private boolean _atividade = true;
     private int _multa = 0;
-    private tipoUtente _tipo = tipoUtente.NORMAL;
+    private TipoUtente _tipo = TipoUtenteNormal.NORMAL;
+    private Map<Integer, Requisicao> _requisicoes = new HashMap<>();
 
     /**
      * Construtor que inicializa um Utente já com atributos preenchidos
@@ -103,7 +105,7 @@ public class Utente implements Serializable, Comparable<Utente> {
         _multa += qtd;
     }
 
-    public void setTipo (tipoUtente tipo) {
+    public void setTipo (TipoUtente tipo) {
         _tipo = tipo;
     }
 }

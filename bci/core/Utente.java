@@ -108,4 +108,20 @@ public class Utente implements Serializable, Comparable<Utente> {
     public void setTipo (TipoUtente tipo) {
         _tipo = tipo;
     }
+
+    public int getNumObrasRequisitadas (){
+        return this._requisicoes.size();
+    }
+
+    public TipoUtente getTipo(){
+        return this._tipo;
+    }
+
+    public boolean alreadyContainsWork(Obra obra){
+        for (Requisicao requisicao: _requisicoes.values()){
+            if (requisicao.getObra().getId() == obra.getId())
+                return true;
+        }
+        return false;
+    }
 }

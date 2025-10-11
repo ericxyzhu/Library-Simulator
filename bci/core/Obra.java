@@ -53,6 +53,7 @@ public abstract class Obra implements Comparable<Obra> , Serializable {
         return ret;
     }
 
+
     /**
      * Devolve o preço da Obra
      * @return preço da Obra
@@ -132,9 +133,10 @@ public abstract class Obra implements Comparable<Obra> , Serializable {
         if (_disponiveis + copies >= 0){
             _numberOfCopies += copies;
             _disponiveis += copies;
+            //if (_numberOfCopies == 0)
             return true;
         } else 
-         return false;
+            return false;
     }
 
 }

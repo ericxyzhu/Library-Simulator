@@ -11,4 +11,12 @@ public class Requisicao implements Serializable {
         _obra = obra;
         _deadline = deadline;
     }
+
+    public Obra getObra(){
+        return _obra;
+    }
+
+    public int getDeadLine(){
+        return _deadline;
+    }
 }

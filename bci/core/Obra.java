@@ -1,7 +1,6 @@
 package bci.core;
 
 import java.io.Serializable;
-
     
 
 /**
@@ -129,14 +128,8 @@ public abstract class Obra implements Comparable<Obra> , Serializable {
      * @param copies número a adicionar ou a subtrair ao número de cópias
      * @throws Exception se o número de cópias, ou o número de cópias disponivel ficar negativo
      */
-    public boolean changeCopies (int copies){
-        if (_disponiveis + copies >= 0){
-            _numberOfCopies += copies;
-            _disponiveis += copies;
-            //if (_numberOfCopies == 0)
-            return true;
-        } else 
-            return false;
+    public void changeCopies (int copies){
+        _numberOfCopies += copies;
+        _disponiveis += copies;   
     }
-
 }

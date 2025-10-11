@@ -317,6 +317,31 @@ public class Library implements Serializable {
       }
     }
     return ret;
+  }
+
+  public void removeCriador(List<Criador> list){
+    for (Criador criador: list){
+      _criadores.remove(criador.getNome());
+    }
+  }
+
+  public boolean changeCopiesSuper(Obra obra, int copies){
+    if (obra.getDisponiveis() + copies < 0)
+      return false;
+    if (obra.getDisponiveis() + copies == 0){
+      List<Criador> list = new ArrayList<>();
+      for (Criador criador: _criadores.values()){
+        if(criador.obras().contains(obra)){
+          criador.remove(obra);
+          if(criador.obras().size() == 0)
+            list.add(criador);
+        }
+      }
+      removeCriador(list);
+      return true;
+    }
+    obra.changeCopies(copies);
+    return true;
 
   }
 

@@ -51,9 +51,4 @@ public class Dvd extends Obra {
         }
         return false;
     }
-
-
-
-
-
 }

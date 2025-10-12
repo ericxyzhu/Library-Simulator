@@ -2,6 +2,7 @@ package bci.app.user;
 
 import bci.core.LibraryManager;
 import bci.app.exception.NoSuchUserException;
+import bci.core.exception.UserNotFoundException;
 import pt.tecnico.uilib.menus.Command;
 import pt.tecnico.uilib.menus.CommandException;
 //FIXME add more imports if needed
@@ -13,11 +14,18 @@ class DoShowUserNotifications extends Command<LibraryManager> {
 
   DoShowUserNotifications(LibraryManager receiver) {
     super(Label.SHOW_USER_NOTIFICATIONS, receiver);
-    //FIXME add command fields
+    addIntegerField("id", Prompt.userId());
   }
 
   @Override
   protected final void execute() throws CommandException {
-    //FIXME implement command
+    int id = integerField("id");
+    try {
+        _display.addLine(_receiver.getAllNotifString(id));
+        _display.display();
+        _receiver.clearNotifs(id);
+    } catch (UserNotFoundException unfe) {
+      throw new NoSuchUserException(id);
+    }
   }
 }

@@ -1,6 +1,8 @@
 package bci.core;
 
+import bci.core.exception.*;
 import java.io.Serializable;
+import java.util.*;
     
 
 /**
@@ -19,6 +21,9 @@ public abstract class Obra implements Comparable<Obra> , Serializable {
     private String _title;
     private Categoria _categoria;
     private int _disponiveis; 
+    private Map<Integer, Utente> _notifDisp = new HashMap<>();
+    private Map<Integer, Utente> _notifRequis = new HashMap<>();
+
     /**
      * Construtor que inicializa uma Obra já com atributos preenchidos
      * 
@@ -132,4 +137,32 @@ public abstract class Obra implements Comparable<Obra> , Serializable {
         _numberOfCopies += copies;
         _disponiveis += copies;   
     }
+
+    public void addNotifDisp (int id, Library library) throws UserNotFoundException {
+        _notifDisp.putIfAbsent(id, library.getUtente(id));
+    }
+
+    public void addNotifRequis (int id, Library library) throws UserNotFoundException {
+        _notifRequis.putIfAbsent(id, library.getUtente(id));
+    }
+
+    public void sendNotifDisp () {
+        Notificacao notif = new NotificacaoDisponibilidade(this);
+        for (Utente utente : _notifDisp.values()) {
+            utente.addNotif(notif);
+        }
+    }
+
+    public void sendNotifRequis () {
+        Notificacao notif = new NotificacaoRequisicao(this);
+        for (Utente utente : _notifRequis.values()) {
+            utente.addNotif(notif);
+        }
+    }
+
+    public void removeNotifDisp (int id) {
+        _notifDisp.remove(id);
+    }
 }
+
+    

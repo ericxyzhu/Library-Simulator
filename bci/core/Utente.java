@@ -18,6 +18,7 @@ public class Utente implements Serializable, Comparable<Utente> {
     private int _multa = 0;
     private TipoUtente _tipo = TipoUtenteNormal.NORMAL;
     private Map<Integer, Requisicao> _requisicoes = new HashMap<>();
+    private List<Notificacao> _notificacoes = new ArrayList<>();
 
     /**
      * Construtor que inicializa um Utente já com atributos preenchidos
@@ -124,4 +125,25 @@ public class Utente implements Serializable, Comparable<Utente> {
         }
         return false;
     }
+
+    public void addNotif (Notificacao notif) {
+        _notificacoes.add(notif);
+    }
+
+    public void clearNotifs () {
+        _notificacoes.clear();
+    }
+
+    public String getAllNotifString () {
+        String ret = new String();
+        for (Notificacao notif : _notificacoes) {
+            if (ret.length() != 0) {
+                ret += "\n";
+            }
+            ret += notif.toString();
+        }
+        return ret;
+    }
 }
+
+    

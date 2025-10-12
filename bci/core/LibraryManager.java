@@ -96,6 +96,19 @@ public class LibraryManager {
   public String pesquisaTermoObras(String termo){
     return _library.pesquisaTermoObras(termo);
   }
+
+  public boolean changeCopiesSuper (Obra obra, int copies) {
+    return _library.changeCopiesSuper(obra, copies);
+  }
+
+  public String getAllNotifString (int id) throws UserNotFoundException {
+    return _library.getUtente(id).getAllNotifString();
+  }
+
+  public void clearNotifs (int id) throws UserNotFoundException {
+    _library.getUtente(id).clearNotifs();
+  }
+
   /**
    * Saves the serialized application's state into the file associated to the current library
    *
@@ -104,7 +117,6 @@ public class LibraryManager {
    * @throws IOException if there is some error while serializing the state of the network to disk.
    **/
   public void save() throws MissingFileAssociationException, FileNotFoundException, IOException {
-    // FIXME implement serialization method
     if (_library.getHasFilename() == false) {
       throw new MissingFileAssociationException();
     } else {
@@ -122,7 +134,6 @@ public class LibraryManager {
    * @throws IOException if there is some error while serializing the state of the network to disk.
    **/
   public void saveAs(String filename) throws FileNotFoundException, MissingFileAssociationException, IOException {
-    // FIXME implement serialization method
     _library.setHasFilename(true);
     _library.setFilename(filename);
     ObjectOutputStream obOut = null;
@@ -147,7 +158,6 @@ public class LibraryManager {
    *         an error while processing this file.
    **/
   public void load(String filename) throws UnavailableFileException, IOException, ClassNotFoundException {
-    // FIXME implement serialization method
     ObjectInputStream objIn = null;
     try {
       FileInputStream fpin = new FileInputStream(filename);

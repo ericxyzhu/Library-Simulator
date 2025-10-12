@@ -373,7 +373,7 @@ public class Library implements Serializable {
     return 0;
   }
 
-  public void devolveObra (int utenteId, int obraId) throws UserNotFoundException, WorkNotFoundException, RequisNotFoundException {
+  public int devolveObra (int utenteId, int obraId) throws UserNotFoundException, WorkNotFoundException, RequisNotFoundException {
     Utente utente = getUtente(utenteId);
     Obra obra = getObra(obraId);
     if (utente.hasRequis(obraId) == false) {
@@ -389,6 +389,7 @@ public class Library implements Serializable {
       utente.setCredit(utente.getCredit() + 1);
     }
     utente.updateTipo();
+    return deadline;
   }
 
   public void updateEstadoUtentes () {

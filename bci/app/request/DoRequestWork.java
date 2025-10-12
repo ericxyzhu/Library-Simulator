@@ -26,7 +26,7 @@ class DoRequestWork extends Command<LibraryManager> {
 
   @Override
   protected final void execute() throws CommandException {
-    int userId = integerField("userid");
+    int userId = integerField("userId");
     int workId = integerField("workId");
     try {
         int errorCode = _receiver.requisitaObra(userId, workId);

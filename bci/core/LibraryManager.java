@@ -117,8 +117,8 @@ public class LibraryManager {
     return _library.requisitaObra(utenteId, obraId);
   }
 
-  public void devolveObra (int utenteId, int obraId) throws UserNotFoundException, WorkNotFoundException, RequisNotFoundException {
-    _library.devolveObra(utenteId, obraId);
+  public int devolveObra (int utenteId, int obraId) throws UserNotFoundException, WorkNotFoundException, RequisNotFoundException {
+    return _library.devolveObra(utenteId, obraId);
   }
 
   public void updateEstadoUtentes () {

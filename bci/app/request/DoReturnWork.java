@@ -26,12 +26,12 @@ class DoReturnWork extends Command<LibraryManager> {
 
   @Override
   protected final void execute() throws CommandException {
-    int userId = integerField("userid");
+    int userId = integerField("userId");
     int workId = integerField("workId");
     try {
-      _receiver.devolveObra(userId, workId);
+      int deadline = _receiver.devolveObra(userId, workId);
       int today = _receiver.getData().getDia();
-      int deadline = _receiver.getUtente(userId).getRequis(workId).getDeadline();
+      //int deadline = _receiver.getUtente(userId).getRequis(workId).getDeadline();
       if (today - deadline > 0) {
         _receiver.getUtente(userId).changeNumForaPrazo(-1);
         int multa = (today - deadline) * 5;

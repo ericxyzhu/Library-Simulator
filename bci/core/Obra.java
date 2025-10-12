@@ -57,6 +57,18 @@ public abstract class Obra implements Comparable<Obra> , Serializable {
         return ret;
     }
 
+    @Override
+    public boolean equals (Object obj) {
+        if (!(obj instanceof Obra)) {
+            return false;
+        }
+        return _id == ((Obra)obj)._id;
+    }
+
+    @Override
+    public int hashCode () {
+        return _title.hashCode();
+    }
 
     /**
      * Devolve o preço da Obra

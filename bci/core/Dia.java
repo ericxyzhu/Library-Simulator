@@ -44,7 +44,7 @@ public class Dia implements Serializable {
      * Avanca a data n dias
      * @param n número de dias a avançar
      */
-    protected void avanca (int n) {
+    public void avanca (int n) {
         if (n > 0) _dia += n;
     }
 }

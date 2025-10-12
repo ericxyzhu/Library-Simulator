@@ -138,6 +138,10 @@ public abstract class Obra implements Comparable<Obra> , Serializable {
         _disponiveis += copies;   
     }
 
+    public void changeDisponiveis (int num) {
+        _disponiveis += num;
+    }
+
     public void addNotifDisp (int id, Library library) throws UserNotFoundException {
         _notifDisp.putIfAbsent(id, library.getUtente(id));
     }

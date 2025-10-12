@@ -16,7 +16,7 @@ public class Requisicao implements Serializable {
         return _obra;
     }
 
-    public int getDeadLine(){
+    public int getDeadline(){
         return _deadline;
     }
 }

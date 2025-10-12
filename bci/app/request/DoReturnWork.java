@@ -31,14 +31,14 @@ class DoReturnWork extends Command<LibraryManager> {
     try {
       _receiver.devolveObra(userId, workId);
       int today = _receiver.getData().getDia();
-      int deadline = _receiver.getUtente(userId).getRequis(workId).getDeadLine();
+      int deadline = _receiver.getUtente(userId).getRequis(workId).getDeadline();
       if (today - deadline > 0) {
+        _receiver.getUtente(userId).changeNumForaPrazo(-1);
         int multa = (today - deadline) * 5;
         _display.addLine(Message.showFine(userId, multa));
         _display.display();
         boolean bool = Form.confirm(Prompt.finePaymentChoice());
         if (bool == true) {
-          _receiver.getUtente(userId).changeNumForaPrazo(-1);
           if (_receiver.getUtente(userId).getNumForaPrazo() == 0 && _receiver.getUtente(userId).getMulta() == 0) {
             _receiver.getUtente(userId).setAtividade(true);
           }

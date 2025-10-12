@@ -18,5 +18,6 @@ class DoAdvanceDate extends Command<LibraryManager> {
     _receiver.setIsModified(true);
     Integer num = integerField("num");
     _receiver.avancaData(num);
+    _receiver.updateEstadoUtentes();
   }
 }

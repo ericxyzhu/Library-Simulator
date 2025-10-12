@@ -20,6 +20,7 @@ public class Utente implements Serializable, Comparable<Utente> {
     private Map<Integer, Requisicao> _requisicoes = new HashMap<>();
     private List<Notificacao> _notificacoes = new ArrayList<>();
     private int _numForaPrazo = 0;
+    private int _credit = 0;
 
     /**
      * Construtor que inicializa um Utente já com atributos preenchidos
@@ -136,8 +137,22 @@ public class Utente implements Serializable, Comparable<Utente> {
         return this._requisicoes.size();
     }
 
-    public TipoUtente getTipo(){
+    public TipoUtente getTipo () {
         return this._tipo;
+    }
+
+    public void updateTipo () {
+        switch (_credit) {
+            case 0 : 
+                _tipo = TipoUtenteFaltoso.FALTOSO;
+                break;
+            case 3 :
+                _tipo = TipoUtenteNormal.NORMAL;
+                break;
+            case 5 :
+                _tipo = TipoUtenteCumpridor.CUMPRIDOR;
+                break;
+        }
     }
 
     public boolean alreadyContainsWork(Obra obra){
@@ -173,6 +188,27 @@ public class Utente implements Serializable, Comparable<Utente> {
 
     public int getNumForaPrazo () {
         return _numForaPrazo;
+    }
+
+    public int getCredit () {
+        return _credit;
+    }
+
+    public void setCredit (int qtd) {
+        _credit = qtd;
+    }
+
+    public void updateEstado (Library library) {
+        int today = library.getData().getDia();
+        int numForaPrazo = 0;
+        for (Requisicao requis : _requisicoes.values()) {
+            int deadline = requis.getDeadline();
+            if (today > deadline) {
+                _atividade = false;
+                numForaPrazo++;
+            }
+        }
+        _numForaPrazo = numForaPrazo;
     }
 }
 

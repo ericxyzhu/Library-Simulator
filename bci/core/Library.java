@@ -304,7 +304,9 @@ public class Library implements Serializable {
       throw new UserActivityException(id);
     } else {
       utente.limpaMulta();
-      utente.setAtividade(true);
+      if (utente.getNumForaPrazo() == 0) {
+        utente.setAtividade(true);
+      }
     }
   }
 
@@ -367,15 +369,32 @@ public class Library implements Serializable {
     }
     int deadline = utente.getTipo().prazo(obra) + _dia.getDia();
     utente.addRequis(obra, deadline);
+    obra.changeDisponiveis(-1);
     return 0;
   }
 
   public void devolveObra (int utenteId, int obraId) throws UserNotFoundException, WorkNotFoundException, RequisNotFoundException {
     Utente utente = getUtente(utenteId);
+    Obra obra = getObra(obraId);
     if (utente.hasRequis(obraId) == false) {
       throw new RequisNotFoundException(utenteId, obraId);
     }
+    int today = _dia.getDia();
+    int deadline = utente.getRequis(obraId).getDeadline();
     utente.removeRequis(obraId);
+    obra.changeDisponiveis(1);
+    if (today > deadline) {
+      utente.setCredit(0);
+    } else {
+      utente.setCredit(utente.getCredit() + 1);
+    }
+    utente.updateTipo();
+  }
+
+  public void updateEstadoUtentes () {
+    for (Utente utente : _utentes) {
+      utente.updateEstado(this);
+    }
   }
 
   /**

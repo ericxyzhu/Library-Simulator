@@ -25,6 +25,7 @@ public class Library implements Serializable {
   private Map<Integer, Obra> _obras;
   private Set<Utente> _utentes;
   private Map<String, Criador> _criadores;
+  private List<Regras> _regras = new ArrayList<>();
   
   /**
    * Construtor que inicializa uma nova biblioteca vazia
@@ -34,6 +35,12 @@ public class Library implements Serializable {
     _obras = new TreeMap<>();
     _utentes = new TreeSet<>();
     _criadores = new TreeMap<>();
+    _regras.add(new RegraSameWorkTwice());
+    _regras.add(new RegraUtenteActive());
+    _regras.add(new RegraUtenteMaxWork());
+    _regras.add(new RegraWorkCategory());
+    _regras.add(new RegraWorkHasAvailableCopies());
+    _regras.add(new RegraWorkPrice());
   }
 
   /**
@@ -343,6 +350,32 @@ public class Library implements Serializable {
     obra.changeCopies(copies);
     return true;
 
+  }
+
+  public int requisitaObra (int utenteId, int obraId) throws UserNotFoundException, WorkNotFoundException/*, RuleNotPassedException, WorkNotAvailableException*/ {
+    Utente utente = getUtente(utenteId);
+    Obra obra = getObra(obraId);
+    for (Regras regra : _regras) {
+      if (regra.verificar(utente, obra) == false) {
+        return regra.getId();
+        /*if (regra.getId() != 3) {
+          throw new RuleNotPassedException(regra.getId());
+        } else {
+          throw new WorkNotAvailableException();
+        }*/
+      }
+    }
+    int deadline = utente.getTipo().prazo(obra) + _dia.getDia();
+    utente.addRequis(obra, deadline);
+    return 0;
+  }
+
+  public void devolveObra (int utenteId, int obraId) throws UserNotFoundException, WorkNotFoundException, RequisNotFoundException {
+    Utente utente = getUtente(utenteId);
+    if (utente.hasRequis(obraId) == false) {
+      throw new RequisNotFoundException(utenteId, obraId);
+    }
+    utente.removeRequis(obraId);
   }
 
   /**

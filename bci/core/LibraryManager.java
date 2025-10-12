@@ -21,6 +21,10 @@ public class LibraryManager {
     _library = new Library();
   }
 
+  public Library getLibrary () {
+    return _library;
+  }
+
   public Dia getData () {
     return _library.getData();
   }
@@ -107,6 +111,14 @@ public class LibraryManager {
 
   public void clearNotifs (int id) throws UserNotFoundException {
     _library.getUtente(id).clearNotifs();
+  }
+
+  public int requisitaObra (int utenteId, int obraId) throws UserNotFoundException, WorkNotFoundException/*, RuleNotPassedException, WorkNotAvailableException*/ {
+    return _library.requisitaObra(utenteId, obraId);
+  }
+
+  public void devolveObra (int utenteId, int obraId) throws UserNotFoundException, WorkNotFoundException, RequisNotFoundException {
+    _library.devolveObra(utenteId, obraId);
   }
 
   /**

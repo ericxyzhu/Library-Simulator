@@ -19,6 +19,7 @@ public class Utente implements Serializable, Comparable<Utente> {
     private TipoUtente _tipo = TipoUtenteNormal.NORMAL;
     private Map<Integer, Requisicao> _requisicoes = new HashMap<>();
     private List<Notificacao> _notificacoes = new ArrayList<>();
+    private int _numForaPrazo = 0;
 
     /**
      * Construtor que inicializa um Utente já com atributos preenchidos
@@ -106,8 +107,29 @@ public class Utente implements Serializable, Comparable<Utente> {
         _multa += qtd;
     }
 
+    public int getMulta () {
+        return _multa;
+    }
+
     public void setTipo (TipoUtente tipo) {
         _tipo = tipo;
+    }
+
+    public void addRequis (Obra obra, int deadline) {
+        Requisicao requis = new Requisicao(obra, deadline);
+        _requisicoes.put(obra.getId(), requis);
+    }
+
+    public void removeRequis (int obraId) {
+        _requisicoes.remove(obraId);
+    }
+
+    public boolean hasRequis (int obraId) {
+        return _requisicoes.containsKey(obraId);
+    }
+
+    public Requisicao getRequis (int id) {
+        return _requisicoes.get(id);
     }
 
     public int getNumObrasRequisitadas (){
@@ -143,6 +165,14 @@ public class Utente implements Serializable, Comparable<Utente> {
             ret += notif.toString();
         }
         return ret;
+    }
+
+    public void changeNumForaPrazo (int num) {
+        _numForaPrazo += num;
+    }
+
+    public int getNumForaPrazo () {
+        return _numForaPrazo;
     }
 }
 

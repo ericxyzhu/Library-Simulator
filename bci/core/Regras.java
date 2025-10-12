@@ -2,7 +2,9 @@ package bci.core;
 
 // import bci.app.exception.BorrowingRuleFailedException;
 
-public abstract class Regras implements Comparable<Regras>{
+import java.io.Serializable;
+
+public abstract class Regras implements Comparable<Regras>, Serializable {
     public int _id;
     public Regras(int id){
         _id = id;

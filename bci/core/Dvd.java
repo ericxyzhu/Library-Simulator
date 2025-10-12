@@ -51,4 +51,12 @@ public class Dvd extends Obra {
         }
         return false;
     }
+
+    public void removeObra (Library library) {
+        super.removeObra(library);
+        _realizador.remove(this);
+        if (_realizador.getNumObras() == 0) {
+            _realizador.removeCriador(library);
+        }
+    }
 }

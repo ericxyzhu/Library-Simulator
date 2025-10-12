@@ -328,7 +328,7 @@ public class Library implements Serializable {
     return ret;
   }
 
-  public void removeCriador(List<Criador> list){
+  /*public void removeCriador(List<Criador> list){
     for (Criador criador: list){
       _criadores.remove(criador.getNome());
     }
@@ -352,6 +352,20 @@ public class Library implements Serializable {
     obra.changeCopies(copies);
     return true;
 
+  }*/
+
+  public boolean changeCopies (int id, int copies) throws WorkNotFoundException {
+    Obra obra = getObra(id);
+    return obra.changeCopies(copies, this);
+  }
+
+  public void removeObra (int id) {
+    _obras.remove(id);
+    _numObras--;
+  }
+
+  public void removeCriador (String nome) {
+    _criadores.remove(nome);
   }
 
   public int requisitaObra (int utenteId, int obraId) throws UserNotFoundException, WorkNotFoundException/*, RuleNotPassedException, WorkNotAvailableException*/ {

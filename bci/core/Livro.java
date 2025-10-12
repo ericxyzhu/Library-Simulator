@@ -1,7 +1,7 @@
 package bci.core;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Extende {@link Obra} com atributos específicos a Livro
@@ -66,4 +66,13 @@ public class Livro extends Obra {
         return false;
     }
 
+    public void removeObra (Library library) {
+        super.removeObra(library);
+        for (Criador criador : _creators) {
+            criador.remove(this);
+            if (criador.getNumObras() == 0) {
+                criador.removeCriador(library);
+            }
+        }
+    }
 }

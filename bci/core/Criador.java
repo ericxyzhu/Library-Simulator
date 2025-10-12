@@ -17,12 +17,20 @@ public class Criador implements Serializable {
         _obras.remove(obra); //Estou a assumir que o objeto passado é igual
                              //ao que está no Set, provavelmente vamos mudar isto                          
     }
+
     public String getNome(){
         return _nome;
     }
+
     Set<Obra> obras(){
         return Collections.unmodifiableSet(_obras);
     }
 
+    public int getNumObras () {
+        return _obras.size();
+    }
     
+    public void removeCriador (Library library) {
+        library.removeCriador(_nome);
+    }
 }

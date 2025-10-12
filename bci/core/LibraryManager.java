@@ -101,8 +101,9 @@ public class LibraryManager {
     return _library.pesquisaTermoObras(termo);
   }
 
-  public boolean changeCopiesSuper (Obra obra, int copies) {
-    return _library.changeCopiesSuper(obra, copies);
+  public boolean changeCopies (int id, int copies) throws WorkNotFoundException {
+    //return _library.changeCopiesSuper(obra, copies);
+    return _library.changeCopies(id, copies);
   }
 
   public String getAllNotifString (int id) throws UserNotFoundException {

@@ -133,9 +133,18 @@ public abstract class Obra implements Comparable<Obra> , Serializable {
      * @param copies número a adicionar ou a subtrair ao número de cópias
      * @throws Exception se o número de cópias, ou o número de cópias disponivel ficar negativo
      */
-    public void changeCopies (int copies){
+    public boolean changeCopies (int copies, Library library){
+        if (_disponiveis + copies < 0) return false;
         _numberOfCopies += copies;
-        _disponiveis += copies;   
+        _disponiveis += copies;
+        if (_numberOfCopies == 0) {
+            removeObra(library);
+        }   
+        return true;
+    }
+
+    public void removeObra (Library library) {
+        library.removeObra(_id);
     }
 
     public void changeDisponiveis (int num) {

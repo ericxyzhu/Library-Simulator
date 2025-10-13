@@ -20,8 +20,8 @@ class DoRequestWork extends Command<LibraryManager> {
 
   DoRequestWork(LibraryManager receiver) {
     super(Label.REQUEST_WORK, receiver);
-    addIntegerField("userId", "Introduza o número de utente: ");
-    addIntegerField("workId", "Introduza o número da obra: ");
+    addIntegerField("userId", bci.app.user.Prompt.userId());
+    addIntegerField("workId", bci.app.work.Prompt.workId());
   }
 
   @Override

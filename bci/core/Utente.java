@@ -143,7 +143,7 @@ public class Utente implements Serializable, Comparable<Utente> {
 
     public void updateTipo () {
         switch (_credit) {
-            case 0 : 
+            case -3 : 
                 _tipo = TipoUtenteFaltoso.FALTOSO;
                 break;
             case 3 :
@@ -151,6 +151,11 @@ public class Utente implements Serializable, Comparable<Utente> {
                 break;
             case 5 :
                 _tipo = TipoUtenteCumpridor.CUMPRIDOR;
+                break;
+            case -1 :
+                if (_tipo == TipoUtenteCumpridor.CUMPRIDOR) {
+                    _tipo = TipoUtenteNormal.NORMAL;
+                }
                 break;
         }
     }
@@ -196,6 +201,10 @@ public class Utente implements Serializable, Comparable<Utente> {
 
     public void setCredit (int qtd) {
         _credit = qtd;
+    }
+
+    public void changeCredit (int qtd) {
+        _credit += qtd;
     }
 
     public void updateEstado (Library library) {

@@ -403,9 +403,15 @@ public class Library implements Serializable {
     }
     obra.changeDisponiveis(1);
     if (today > deadline) {
-      utente.setCredit(0);
+      if (utente.getCredit() > 0) {
+        utente.setCredit(0);
+      }
+      utente.changeCredit(-1);
     } else {
-      utente.setCredit(utente.getCredit() + 1);
+      if (utente.getCredit() < 0) {
+        utente.setCredit(0);
+      }
+      utente.changeCredit(1);
     }
     utente.updateTipo();
     return deadline;

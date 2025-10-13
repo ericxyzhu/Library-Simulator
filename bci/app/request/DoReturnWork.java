@@ -20,8 +20,8 @@ class DoReturnWork extends Command<LibraryManager> {
 
   DoReturnWork(LibraryManager receiver) {
     super(Label.RETURN_WORK, receiver);
-    addIntegerField("userId", "Introduza o número de utente: ");
-    addIntegerField("workId", "Introduza o número da obra: ");
+    addIntegerField("userId", bci.app.user.Prompt.userId());
+    addIntegerField("workId", bci.app.work.Prompt.workId());
   }
 
   @Override

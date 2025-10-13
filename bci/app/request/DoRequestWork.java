@@ -40,7 +40,6 @@ class DoRequestWork extends Command<LibraryManager> {
         if (errorCode >= 1) {
           throw new BorrowingRuleFailedException(userId, workId, errorCode);
         }
-        _receiver.getObra(workId).removeNotifDisp(userId);
         int prazo = _receiver.getUtente(userId).getTipo().prazo(_receiver.getObra(workId));
         int deadline = _receiver.getData().getDia() + prazo;
         _display.addLine(Message.workReturnDay(workId, deadline));

@@ -18,7 +18,7 @@ public class Utente implements Serializable, Comparable<Utente> {
     private int _multa = 0;
     private TipoUtente _tipo = TipoUtenteNormal.NORMAL;
     private Map<Integer, Requisicao> _requisicoes = new HashMap<>();
-    private List<Notificacao> _notificacoes = new ArrayList<>();
+    private String _notificacoes = new String();
     private int _numForaPrazo = 0;
     private int _credit = 0;
 
@@ -168,23 +168,17 @@ public class Utente implements Serializable, Comparable<Utente> {
         return false;
     }
 
-    public void addNotif (Notificacao notif) {
-        _notificacoes.add(notif);
+    public void addNotif (String notif) {
+        if (_notificacoes.length() != 0) _notificacoes += "\n";
+        _notificacoes += notif;
     }
 
     public void clearNotifs () {
-        _notificacoes.clear();
+        _notificacoes = new String();
     }
 
     public String getAllNotifString () {
-        String ret = new String();
-        for (Notificacao notif : _notificacoes) {
-            if (ret.length() != 0) {
-                ret += "\n";
-            }
-            ret += notif.toString();
-        }
-        return ret;
+        return _notificacoes;
     }
 
     public void changeNumForaPrazo (int num) {

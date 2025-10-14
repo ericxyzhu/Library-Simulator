@@ -398,10 +398,10 @@ public class Library implements Serializable {
     int today = _dia.getDia();
     int deadline = utente.getRequis(obraId).getDeadline();
     utente.removeRequis(obraId);
-    if (obra.getDisponiveis() == 0) {
+    obra.changeDisponiveis(1);
+    if (obra.getDisponiveis() == 1) {
       obra.sendNotifDisp();
     }
-    obra.changeDisponiveis(1);
     if (today > deadline) {
       if (utente.getCredit() > 0) {
         utente.setCredit(0);

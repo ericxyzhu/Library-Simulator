@@ -174,14 +174,15 @@ public abstract class Obra implements Comparable<Obra> , Serializable {
     public void sendNotifDisp () {
         Notificacao notif = new NotificacaoDisponibilidade(this);
         for (Utente utente : _notifDisp.values()) {
-            utente.addNotif(notif);
+
+            utente.addNotif(notif.toString());
         }
     }
 
     public void sendNotifRequis () {
         Notificacao notif = new NotificacaoRequisicao(this);
         for (Utente utente : _notifRequis.values()) {
-            utente.addNotif(notif);
+            utente.addNotif(notif.toString());
         }
     }
 

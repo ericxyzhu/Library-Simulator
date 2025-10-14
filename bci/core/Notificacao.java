@@ -10,6 +10,6 @@ public abstract class Notificacao implements Serializable {
     }
 
     public String toString () {
-        return _obra.toString();
+        return _obra.getDescription();
     }
 }

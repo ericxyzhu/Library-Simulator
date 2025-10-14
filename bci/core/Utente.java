@@ -153,7 +153,7 @@ public class Utente implements Serializable, Comparable<Utente> {
                 _tipo = TipoUtenteCumpridor.CUMPRIDOR;
                 break;
             case -1 :
-                if (_tipo == TipoUtenteCumpridor.CUMPRIDOR) {
+                if (_tipo.equals(TipoUtenteCumpridor.CUMPRIDOR)) {
                     _tipo = TipoUtenteNormal.NORMAL;
                 }
                 break;

@@ -35,11 +35,12 @@ class DoReturnWork extends Command<LibraryManager> {
       if (today - deadline > 0) {
         _receiver.getUtente(userId).changeNumForaPrazo(-1);
         int multa = (today - deadline) * 5;
-        _display.addLine(Message.showFine(userId, multa));
+        _display.addLine(Message.showFine(userId, multa + _receiver.getUtente(userId).getMulta()));
         _display.display();
         boolean bool = Form.confirm(Prompt.finePaymentChoice());
         if (bool == true) {
-          if (_receiver.getUtente(userId).getNumForaPrazo() == 0 && _receiver.getUtente(userId).getMulta() == 0) {
+          _receiver.getUtente(userId).limpaMulta();
+          if (_receiver.getUtente(userId).getNumForaPrazo() == 0) {
             _receiver.getUtente(userId).setAtividade(true);
           }
         } else {

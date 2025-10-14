@@ -12,4 +12,8 @@ public abstract class TipoUtente implements Serializable {
 
     public abstract boolean canRequisMoreThan25Euro ();
 
+    public boolean equals (TipoUtente tipo) {
+        return tipo.toString() == toString();
+    }
+
 }

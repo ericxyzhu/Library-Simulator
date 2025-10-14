@@ -1,0 +1,36 @@
+*** testsBoth/A-13-03-M-ok.out	2025-10-13 19:23:25.000000000 +0100
+--- testsBoth/A-13-03-M-ok.outhyp	2025-10-14 10:16:18.277003920 +0100
+***************
+*** 81,87 ****
+  Escolha uma opção: 2
+  Introduza o número de utente: 3
+  Introduza o número da obra: 3
+! O utente 3 deve pagar uma multa de EUR 185.
+  O utente deseja pagar multa (s/n)? s
+  Menu de Gestão de Requisições
+  1 - Requisitar obra
+--- 81,87 ----
+  Escolha uma opção: 2
+  Introduza o número de utente: 3
+  Introduza o número da obra: 3
+! O utente 3 deve pagar uma multa de EUR 75.
+  O utente deseja pagar multa (s/n)? s
+  Menu de Gestão de Requisições
+  1 - Requisitar obra
+***************
+*** 107,113 ****
+  0 - Sair
+  Escolha uma opção: 2
+  Introduza o número de utente: 3
+! 3 - Rey - real.last.jedi@universe.com - NORMAL - ACTIVO
+  Menu de Gestão de Utentes
+  1 - Registar utente
+  2 - Mostrar utente
+--- 107,113 ----
+  0 - Sair
+  Escolha uma opção: 2
+  Introduza o número de utente: 3
+! 3 - Rey - real.last.jedi@universe.com - NORMAL - SUSPENSO - EUR 110
+  Menu de Gestão de Utentes
+  1 - Registar utente
+  2 - Mostrar utente

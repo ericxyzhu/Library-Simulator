@@ -1,0 +1,19 @@
+*** testsBoth/A-13-02-M-ok.out	2025-10-13 19:23:25.000000000 +0100
+--- testsBoth/A-13-02-M-ok.outhyp	2025-10-14 10:16:18.119789742 +0100
+***************
+*** 66,72 ****
+  Escolha uma opção: 2
+  Introduza o número de utente: 2
+  Introduza o número da obra: 2
+! O utente 2 deve pagar uma multa de EUR 85.
+  O utente deseja pagar multa (s/n)? n
+  Menu de Gestão de Requisições
+  1 - Requisitar obra
+--- 66,72 ----
+  Escolha uma opção: 2
+  Introduza o número de utente: 2
+  Introduza o número da obra: 2
+! O utente 2 deve pagar uma multa de EUR 60.
+  O utente deseja pagar multa (s/n)? n
+  Menu de Gestão de Requisições
+  1 - Requisitar obra

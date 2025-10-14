@@ -1,0 +1,19 @@
+*** testsBoth/A-09-02-M-ok.out	2025-10-13 19:23:20.000000000 +0100
+--- testsBoth/A-09-02-M-ok.outhyp	2025-10-14 10:16:12.034390174 +0100
+***************
+*** 79,85 ****
+  0 - Sair
+  Escolha uma opção: 4
+  Introduza o número de utente: 3
+! DISPONIBILIDADE: 8 - 1 de 1 - DVD - The rise of Skywalker - 20 - Técnica e Científica - J. J. Abrams - 200505551
+  Menu de Gestão de Utentes
+  1 - Registar utente
+  2 - Mostrar utente
+--- 79,85 ----
+  0 - Sair
+  Escolha uma opção: 4
+  Introduza o número de utente: 3
+! DISPONIBILIDADE: DVD - The rise of Skywalker - 20 - Técnica e Científica - J. J. Abrams - 200505551
+  Menu de Gestão de Utentes
+  1 - Registar utente
+  2 - Mostrar utente

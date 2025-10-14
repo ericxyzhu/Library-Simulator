@@ -1,0 +1,36 @@
+*** testsBoth/A-13-04-M-ok.out	2025-10-13 19:23:25.000000000 +0100
+--- testsBoth/A-13-04-M-ok.outhyp	2025-10-14 10:16:18.532268867 +0100
+***************
+*** 140,146 ****
+  0 - Sair
+  Escolha uma opção: 2
+  Introduza o número de utente: 2
+! 2 - Luke Skywalker - last.jedi@universe.com - NORMAL - SUSPENSO - EUR 100
+  Menu de Gestão de Utentes
+  1 - Registar utente
+  2 - Mostrar utente
+--- 140,146 ----
+  0 - Sair
+  Escolha uma opção: 2
+  Introduza o número de utente: 2
+! 2 - Luke Skywalker - last.jedi@universe.com - CUMPRIDOR - SUSPENSO - EUR 100
+  Menu de Gestão de Utentes
+  1 - Registar utente
+  2 - Mostrar utente
+***************
+*** 159,165 ****
+  0 - Sair
+  Escolha uma opção: 2
+  Introduza o número de utente: 2
+! 2 - Luke Skywalker - last.jedi@universe.com - NORMAL - ACTIVO
+  Menu de Gestão de Utentes
+  1 - Registar utente
+  2 - Mostrar utente
+--- 159,165 ----
+  0 - Sair
+  Escolha uma opção: 2
+  Introduza o número de utente: 2
+! 2 - Luke Skywalker - last.jedi@universe.com - CUMPRIDOR - ACTIVO
+  Menu de Gestão de Utentes
+  1 - Registar utente
+  2 - Mostrar utente

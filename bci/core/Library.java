@@ -155,13 +155,13 @@ public class Library implements Serializable {
    * 
    * @return Lista completa de Utentes
    */
-  public List<Utente> getUtentes () {
+  /*private List<Utente> getUtentes () {
     List<Utente> ret = new ArrayList<>();
     for (Utente utente : _utentes) {
       ret.add(utente);
     }
     return ret;
-  }
+  }*/
 
   /**
    * Obtém uma String com informações acerca de cada Utente inscrito na Biblioteca
@@ -260,7 +260,7 @@ public class Library implements Serializable {
    * @return unmodifiable Set das Obras do Criador 
    * @throws CreatorNotFoundException se não existir um Criador com o nome dado
    */
-  public Set<Obra> getObrasCriador (String nome) throws CreatorNotFoundException{
+  private Set<Obra> getObrasCriador (String nome) throws CreatorNotFoundException{
     if (_criadores.get(nome) == null ) throw new CreatorNotFoundException(nome);
     return Collections.unmodifiableSet(_criadores.get(nome).obras());
   }
@@ -368,17 +368,17 @@ public class Library implements Serializable {
     _criadores.remove(nome);
   }
 
-  public int requisitaObra (int utenteId, int obraId) throws UserNotFoundException, WorkNotFoundException/*, RuleNotPassedException, WorkNotAvailableException*/ {
+  public void requisitaObra (int utenteId, int obraId) throws UserNotFoundException, WorkNotFoundException, RuleNotPassedException, WorkNotAvailableException {
     Utente utente = getUtente(utenteId);
     Obra obra = getObra(obraId);
     for (Regras regra : _regras) {
       if (regra.verificar(utente, obra) == false) {
-        return regra.getId();
-        /*if (regra.getId() != 3) {
+        //return regra.getId();
+        if (regra.getId() != 3) {
           throw new RuleNotPassedException(regra.getId());
         } else {
-          throw new WorkNotAvailableException();
-        }*/
+          throw new WorkNotAvailableException(regra.getId());
+        }
       }
     }
     int deadline = utente.getTipo().prazo(obra) + _dia.getDia();
@@ -386,7 +386,6 @@ public class Library implements Serializable {
     obra.removeNotifDisp(utenteId);
     obra.changeDisponiveis(-1);
     obra.sendNotifRequis();
-    return 0;
   }
 
   public int devolveObra (int utenteId, int obraId) throws UserNotFoundException, WorkNotFoundException, RequisNotFoundException {

@@ -6,6 +6,7 @@ import bci.app.exception.NoSuchWorkException;
 import bci.app.exception.BorrowingRuleFailedException;
 import bci.core.exception.RuleNotPassedException;
 import bci.core.exception.UserNotFoundException;
+import bci.core.exception.WorkNotAvailableException;
 import bci.core.exception.WorkNotFoundException;
 import pt.tecnico.uilib.forms.Form;
 import pt.tecnico.uilib.menus.Command;
@@ -29,17 +30,19 @@ class DoRequestWork extends Command<LibraryManager> {
     int userId = integerField("userId");
     int workId = integerField("workId");
     try {
-        int errorCode = _receiver.requisitaObra(userId, workId);
-        if (errorCode == 3) {
+        _receiver.requisitaObra(userId, workId);
+        /*if (errorCode == 3) {
           boolean bool = Form.confirm(Prompt.returnNotificationPreference());
           if (bool == true) {
             _receiver.getObra(workId).addNotifDisp(userId, _receiver.getLibrary());
+            _receiver.setIsModified(true);
           }
           return;
         }
         if (errorCode >= 1) {
           throw new BorrowingRuleFailedException(userId, workId, errorCode);
-        }
+        }*/
+        _receiver.setIsModified(true);
         int prazo = _receiver.getUtente(userId).getTipo().prazo(_receiver.getObra(workId));
         int deadline = _receiver.getData().getDia() + prazo;
         _display.addLine(Message.workReturnDay(workId, deadline));
@@ -48,6 +51,20 @@ class DoRequestWork extends Command<LibraryManager> {
       throw new NoSuchUserException(userId);
     } catch (WorkNotFoundException wnfe) {
       throw new NoSuchWorkException(workId);
+    } catch (RuleNotPassedException rnpe) {
+      throw new BorrowingRuleFailedException(userId, workId, rnpe.getId());
+    } catch (WorkNotAvailableException wnae) {
+      try {
+        boolean bool = Form.confirm(Prompt.returnNotificationPreference());
+        if (bool == true) {
+          _receiver.getObra(workId).addNotifDisp(userId, _receiver.getLibrary());
+          _receiver.setIsModified(true);
+        }
+      } catch (UserNotFoundException unfe) {
+        throw new NoSuchUserException(userId);
+      } catch (WorkNotFoundException wnfe) {
+        throw new NoSuchWorkException(workId); 
+      }
     }
   }
 }

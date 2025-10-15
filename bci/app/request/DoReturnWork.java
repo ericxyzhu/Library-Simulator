@@ -29,6 +29,7 @@ class DoReturnWork extends Command<LibraryManager> {
     int userId = integerField("userId");
     int workId = integerField("workId");
     try {
+      _receiver.setIsModified(true);
       int deadline = _receiver.devolveObra(userId, workId);
       int today = _receiver.getData().getDia();
       //int deadline = _receiver.getUtente(userId).getRequis(workId).getDeadline();

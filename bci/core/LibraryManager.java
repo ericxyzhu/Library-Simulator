@@ -57,9 +57,9 @@ public class LibraryManager {
     return _library.getUtente(id);
   }
 
-  public List<Utente> getUtentes () {
+  /*public List<Utente> getUtentes () {
     return _library.getUtentes();
-  }
+  }*/
 
   public String getAllUtenteString () {
     return _library.getAllUtenteString();
@@ -81,9 +81,9 @@ public class LibraryManager {
     return _library.getAllObrasString();
   }
   
-  public Set<Obra> getObrasCriador (String nome) throws CreatorNotFoundException{
+  /*public Set<Obra> getObrasCriador (String nome) throws CreatorNotFoundException{
     return _library.getObrasCriador(nome);
-  }
+  }*/
 
   public String getObrasCriadorString (String nome) throws CreatorNotFoundException{
     return _library.getObrasCriadorString(nome);
@@ -114,8 +114,8 @@ public class LibraryManager {
     _library.getUtente(id).clearNotifs();
   }
 
-  public int requisitaObra (int utenteId, int obraId) throws UserNotFoundException, WorkNotFoundException/*, RuleNotPassedException, WorkNotAvailableException*/ {
-    return _library.requisitaObra(utenteId, obraId);
+  public void requisitaObra (int utenteId, int obraId) throws UserNotFoundException, WorkNotFoundException, RuleNotPassedException, WorkNotAvailableException {
+    _library.requisitaObra(utenteId, obraId);
   }
 
   public int devolveObra (int utenteId, int obraId) throws UserNotFoundException, WorkNotFoundException, RequisNotFoundException {

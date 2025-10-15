@@ -24,6 +24,7 @@ class DoPayFine extends Command<LibraryManager> {
     int id = integerField("id");
     try {
       _receiver.pagarMulta(id);
+      _receiver.setIsModified(true);
     } catch (UserNotFoundException unfe) {
       throw new NoSuchUserException(id);
     } catch (UserActivityException uae) {

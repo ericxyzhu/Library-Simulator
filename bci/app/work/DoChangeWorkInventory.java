@@ -22,9 +22,13 @@ class DoChangeWorkInventory extends Command<LibraryManager> {
     int id = integerField("id");
     int copies = integerField("copies");
     try{
-      if((_receiver.changeCopies(id, copies) == false))
+      if((_receiver.changeCopies(id, copies) == false)) {
         _display.addLine(Message.notEnoughInventory(id, copies));
         _display.display();
+      } else {
+        _receiver.setIsModified(true);
+      }
+        
     } catch (WorkNotFoundException wnfe) {
       throw new NoSuchWorkException(id);
     }

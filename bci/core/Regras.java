@@ -1,7 +1,5 @@
 package bci.core;
 
-// import bci.app.exception.BorrowingRuleFailedException;
-
 import java.io.Serializable;
 
 public abstract class Regras implements Comparable<Regras>, Serializable {

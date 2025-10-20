@@ -32,7 +32,6 @@ class DoReturnWork extends Command<LibraryManager> {
       _receiver.setIsModified(true);
       int deadline = _receiver.devolveObra(userId, workId);
       int today = _receiver.getData().getDia();
-      //int deadline = _receiver.getUtente(userId).getRequis(workId).getDeadline();
       if (today - deadline > 0) {
         _receiver.getUtente(userId).changeNumForaPrazo(-1);
         int multa = (today - deadline) * 5;

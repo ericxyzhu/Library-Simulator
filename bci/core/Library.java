@@ -151,19 +151,6 @@ public class Library implements Serializable {
   }
 
   /**
-   * Obtém Lista completa de Utentes inscritos na Biblioteca
-   * 
-   * @return Lista completa de Utentes
-   */
-  /*private List<Utente> getUtentes () {
-    List<Utente> ret = new ArrayList<>();
-    for (Utente utente : _utentes) {
-      ret.add(utente);
-    }
-    return ret;
-  }*/
-
-  /**
    * Obtém uma String com informações acerca de cada Utente inscrito na Biblioteca
    * 
    * @return String com informações dos Utentes
@@ -328,32 +315,6 @@ public class Library implements Serializable {
     return ret;
   }
 
-  /*public void removeCriador(List<Criador> list){
-    for (Criador criador: list){
-      _criadores.remove(criador.getNome());
-    }
-  }
-
-  public boolean changeCopiesSuper(Obra obra, int copies){
-    if (obra.getDisponiveis() + copies < 0)
-      return false;
-    if (obra.getDisponiveis() + copies == 0){
-      List<Criador> list = new ArrayList<>();
-      for (Criador criador: _criadores.values()){
-        if(criador.obras().contains(obra)){
-          criador.remove(obra);
-          if(criador.obras().size() == 0)
-            list.add(criador);
-        }
-      }
-      removeCriador(list);
-      return true;
-    }
-    obra.changeCopies(copies);
-    return true;
-
-  }*/
-
   public boolean changeCopies (int id, int copies) throws WorkNotFoundException {
     Obra obra = getObra(id);
     return obra.changeCopies(copies, this);
@@ -373,7 +334,6 @@ public class Library implements Serializable {
     Obra obra = getObra(obraId);
     for (Regras regra : _regras) {
       if (regra.verificar(utente, obra) == false) {
-        //return regra.getId();
         if (regra.getId() != 3) {
           throw new RuleNotPassedException(regra.getId());
         } else {

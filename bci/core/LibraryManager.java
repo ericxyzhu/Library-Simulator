@@ -57,10 +57,6 @@ public class LibraryManager {
     return _library.getUtente(id);
   }
 
-  /*public List<Utente> getUtentes () {
-    return _library.getUtentes();
-  }*/
-
   public String getAllUtenteString () {
     return _library.getAllUtenteString();
   }
@@ -80,10 +76,6 @@ public class LibraryManager {
   public String getAllObrasString(){
     return _library.getAllObrasString();
   }
-  
-  /*public Set<Obra> getObrasCriador (String nome) throws CreatorNotFoundException{
-    return _library.getObrasCriador(nome);
-  }*/
 
   public String getObrasCriadorString (String nome) throws CreatorNotFoundException{
     return _library.getObrasCriadorString(nome);
@@ -102,7 +94,6 @@ public class LibraryManager {
   }
 
   public boolean changeCopies (int id, int copies) throws WorkNotFoundException {
-    //return _library.changeCopiesSuper(obra, copies);
     return _library.changeCopies(id, copies);
   }
 

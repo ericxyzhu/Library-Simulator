@@ -31,17 +31,6 @@ class DoRequestWork extends Command<LibraryManager> {
     int workId = integerField("workId");
     try {
         _receiver.requisitaObra(userId, workId);
-        /*if (errorCode == 3) {
-          boolean bool = Form.confirm(Prompt.returnNotificationPreference());
-          if (bool == true) {
-            _receiver.getObra(workId).addNotifDisp(userId, _receiver.getLibrary());
-            _receiver.setIsModified(true);
-          }
-          return;
-        }
-        if (errorCode >= 1) {
-          throw new BorrowingRuleFailedException(userId, workId, errorCode);
-        }*/
         _receiver.setIsModified(true);
         int prazo = _receiver.getUtente(userId).getTipo().prazo(_receiver.getObra(workId));
         int deadline = _receiver.getData().getDia() + prazo;

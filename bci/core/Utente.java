@@ -92,6 +92,10 @@ public class Utente implements Serializable, Comparable<Utente> {
         return _id;
     }
 
+    public String getEmail () {
+        return _email;
+    }
+
     public boolean getAtividade () {
         return _atividade;
     }
@@ -213,6 +217,14 @@ public class Utente implements Serializable, Comparable<Utente> {
         }
         _numForaPrazo = numForaPrazo;
     }
+
+    public static Collection<Utente> orderByEmail (Collection<Utente> utentes) {
+        List<Utente> list = new ArrayList<>();
+        list.addAll(utentes);
+        list.sort(new UtenteCmpEmail());
+        return Collections.unmodifiableCollection(list);
+    }
+
 }
 
     

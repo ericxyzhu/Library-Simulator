@@ -2,7 +2,6 @@ package bci.app.work;
 
 import bci.core.LibraryManager;
 import pt.tecnico.uilib.menus.Command;
-//FIXME add more imports if needed
 
 /**
  * Perform search according to miscellaneous criteria.

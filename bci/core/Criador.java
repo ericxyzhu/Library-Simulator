@@ -14,8 +14,7 @@ public class Criador implements Serializable {
         _obras.add(obra);
     }
     void remove (Obra obra){
-        _obras.remove(obra); //Estou a assumir que o objeto passado é igual
-                             //ao que está no Set, provavelmente vamos mudar isto                          
+        _obras.remove(obra);                       
     }
 
     public String getNome(){

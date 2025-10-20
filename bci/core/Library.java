@@ -4,6 +4,9 @@ import bci.core.exception.*;
 import java.io.*;
 import java.util.*;
 
+// Compilation: javac -cp po-uilib.jar:. `find bci -name "*.java"`
+// Execution: java -cp po-uilib.jar:. bci.app.App
+
 /**
  * Class that represents the library as a whole.
  */

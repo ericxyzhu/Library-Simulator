@@ -28,7 +28,7 @@ public class Library implements Serializable {
   private Map<Integer, Obra> _obras;
   private Set<Utente> _utentes;
   private Map<String, Criador> _criadores;
-  private List<Regras> _regras = new ArrayList<>();
+  private RegrasManager _regrasManager = new RegrasManager();
   
   /**
    * Construtor que inicializa uma nova biblioteca vazia
@@ -38,12 +38,6 @@ public class Library implements Serializable {
     _obras = new TreeMap<>();
     _utentes = new TreeSet<>();
     _criadores = new TreeMap<>();
-    _regras.add(new RegraSameWorkTwice());
-    _regras.add(new RegraUtenteActive());
-    _regras.add(new RegraUtenteMaxWork());
-    _regras.add(new RegraWorkCategory());
-    _regras.add(new RegraWorkHasAvailableCopies());
-    _regras.add(new RegraWorkPrice());
   }
 
   /**
@@ -335,15 +329,7 @@ public class Library implements Serializable {
   public void requisitaObra (int utenteId, int obraId) throws UserNotFoundException, WorkNotFoundException, RuleNotPassedException, WorkNotAvailableException {
     Utente utente = getUtente(utenteId);
     Obra obra = getObra(obraId);
-    for (Regras regra : _regras) {
-      if (regra.verificar(utente, obra) == false) {
-        if (regra.getId() != 3) {
-          throw new RuleNotPassedException(regra.getId());
-        } else {
-          throw new WorkNotAvailableException(regra.getId());
-        }
-      }
-    }
+    _regrasManager.verificaRegras(utente, obra);
     int deadline = utente.getTipo().prazo(obra) + _dia.getDia();
     utente.addRequis(obra, deadline);
     obra.removeNotifDisp(utenteId);
